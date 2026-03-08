@@ -1437,24 +1437,18 @@
           <div class="form-row">
             <div class="form-group"><label class="form-label" for="resFecha">Fecha deseada *</label><input class="form-input" type="date" id="resFecha" name="fecha" required /></div>
             <div class="form-group"><label class="form-label" for="resPersonas">Nº de personas *</label>
-              <select class="form-select form-input" id="resPersonas" name="personas" required>
-                <option value="">Selecciona</option>
-                <option>1–2</option><option>3–5</option><option>6–10</option>
-                <option>11–20</option><option>21–50</option><option>+50 personas</option>
-              </select>
+              <input class="form-input" type="number" id="resPersonas" name="personas" min="1" max="200" placeholder="Ej: 8" required />
             </div>
           </div>
-          <div class="form-group"><label class="form-label" for="resOcasion">Tipo de evento / ocasión</label>
+          <div class="form-group" id="grupoOcasion" style="display:none;"><label class="form-label" for="resOcasion">Tipo de ocasión</label>
             <select class="form-select form-input" id="resOcasion" name="ocasion">
               <option value="">Sin especificar</option>
-              <option>Experiencia culinaria participativa</option><option>Guateque de amigos</option>
-              <option>Team Building</option><option>Cena privada</option>
-              <option>Catering / Festival</option><option>Boda</option>
-              <option>Cumpleaños</option><option>Evento corporativo</option><option>Otro</option>
+              <option>Cumpleaños</option><option>Despedida de soltero/a</option>
+              <option>Aniversario</option><option>Reunión de amigos</option><option>Otro</option>
             </select>
           </div>
-          <div class="form-group"><label class="form-label" for="resNotas">Cuéntanos tu idea *</label>
-            <textarea class="form-textarea form-input" id="resNotas" name="notas" placeholder="Describe tu evento, expectativas, estilo de cocina, alergias… cuanto más cuentes, mejor podemos ayudarte." required></textarea>
+          <div class="form-group" id="grupoNotas" style="display:none;"><label class="form-label" for="resNotas">Cuéntanos tu idea *</label>
+            <textarea class="form-textarea form-input" id="resNotas" name="notas" placeholder="Describe lo que buscas, expectativas, alergias, número aproximado de personas…"></textarea>
           </div>
           <button class="modal-submit" type="submit"><i class="fa-solid fa-paper-plane"></i> Enviar solicitud</button>
           <p class="modal-privacy">Al enviar aceptas nuestra <a href="#" style="color:var(--color-accent)">política de privacidad</a>.</p>
@@ -1925,6 +1919,11 @@
       });
     });
 
+    // Ramas que necesitan solo fecha + personas exactas (sin mensaje)
+    const RAMAS_SIMPLES = ['Experiencia Culinaria', 'Team Building'];
+    // Ramas que necesitan mensaje libre
+    const RAMAS_CON_MENSAJE = ['Guateques de Amigos', 'Haznos tu Proposición'];
+
     function openReserva(nombre, tipo) {
       document.getElementById('modalRamaName').textContent = nombre;
       document.getElementById('modalTag').textContent      = tipo;
@@ -1932,6 +1931,16 @@
       document.getElementById('successRama').textContent   = nombre;
       const today = new Date().toISOString().split('T')[0];
       document.getElementById('resFecha').min = today;
+
+      // Adaptar formulario según la rama
+      const esSimple   = RAMAS_SIMPLES.some(r => nombre.includes(r) || tipo.includes(r));
+      const conMensaje = RAMAS_CON_MENSAJE.some(r => nombre.includes(r) || tipo.includes(r));
+
+      document.getElementById('grupoPersonas').style.display = 'flex';
+      document.getElementById('grupoOcasion').style.display  = conMensaje ? 'flex' : 'none';
+      document.getElementById('grupoNotas').style.display    = (conMensaje || (!esSimple)) ? 'flex' : 'none';
+      document.getElementById('resNotas').required           = conMensaje || (!esSimple);
+
       document.getElementById('modalFormContent').style.display = 'block';
       document.getElementById('modalSuccess').classList.remove('show');
       reservaModal.classList.add('open');
