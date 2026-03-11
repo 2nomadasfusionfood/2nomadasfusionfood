@@ -1922,8 +1922,8 @@
       submitBtn.disabled = true;
 
       try {
-        // URL del Worker de Cloudflare – no tocar
-        const WORKER_URL = 'https://nomadas-worker.matriz-b66.workers.dev/';
+        // Worker activo de reservas (producción)
+const WORKER_URL = 'https://nomadas-worker.matriz-b66.workers.dev/';
 
         const res = await fetch(WORKER_URL, {
           method: 'POST',
