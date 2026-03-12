@@ -1943,7 +1943,7 @@ const WORKER_URL = 'https://nomadas-worker.matriz-b66.workers.dev/';
         if (res.ok) {
           document.getElementById('modalFormContent').style.display = 'none';
           document.getElementById('modalSuccess').classList.add('show');
-          reservaForm.reset();
+          reservaForm.reset();           submitBtn.textContent = 'Enviar solicitud';           submitBtn.disabled = false;
         } else {
           throw new Error('Error del servidor');
         }
