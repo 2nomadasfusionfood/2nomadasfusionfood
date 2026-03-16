@@ -679,6 +679,110 @@
     .modal-success.show { display:flex; }
     .modal-success-icon { width:64px; height:64px; background:rgba(39,174,96,.12); border-radius:50%; display:grid; place-items:center; color:#27ae60; font-size:1.8rem; }
     @media(max-width:480px) { .modal { padding:1.6rem 1.2rem; } .form-row { grid-template-columns:1fr; } }
+
+    /* ── Oferta Nómada (subparte de Coffee) ── */
+
+    .sub-rama--destacado {
+      background: rgba(212,160,23,.08);
+      border-left: 3px solid var(--color-accent);
+      padding-left: calc(.75rem + 3px);
+      border-radius: var(--radius-sm);
+    }
+
+    .on-bloque {
+      margin-bottom: 1.4rem;
+      padding-bottom: 1.4rem;
+      border-bottom: 1px solid var(--color-surface);
+    }
+    .on-bloque:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .on-bloque-title {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      color: var(--color-dark);
+      margin: 0 0 .2rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .on-bloque-title i { color: var(--color-accent); font-size: .95rem; }
+
+    .on-bloque-tagline {
+      font-size: .78rem;
+      color: var(--color-light);
+      font-style: italic;
+      margin: 0 0 .6rem;
+    }
+    .on-bloque-sub {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--color-light);
+      margin: .7rem 0 .3rem;
+    }
+    .on-nota {
+      font-size: .75rem;
+      color: var(--color-light);
+      font-style: italic;
+      margin-top: .5rem;
+      line-height: 1.5;
+    }
+
+    .on-lista { list-style: none; padding: 0; margin: 0; }
+    .on-lista li {
+      font-size: .84rem;
+      color: var(--color-mid);
+      padding: .35rem 0;
+      border-bottom: 1px solid rgba(168,152,128,.1);
+      line-height: 1.4;
+    }
+    .on-lista li:last-child { border-bottom: none; }
+    .on-sizes { font-size: .72rem; color: var(--color-light); margin-left: .3rem; }
+
+    /* Vermouth destacado */
+    .on-bloque--vermouth {
+      background: rgba(212,160,23,.04);
+      border: 1px solid rgba(212,160,23,.15);
+      border-radius: var(--radius-md);
+      padding: 1.2rem;
+      margin-left: -.4rem;
+      margin-right: -.4rem;
+    }
+    .on-yayo {
+      background: var(--color-bg);
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+      margin: .8rem 0;
+    }
+    .on-yayo-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      background: rgba(212,160,23,.1);
+      padding: .2rem .6rem;
+      border-radius: var(--radius-xl);
+      margin-bottom: .4rem;
+    }
+    .on-yayo-name {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      color: var(--color-dark);
+      margin: 0;
+    }
+
+    /* Secundarios — peso visual menor */
+    .on-bloque--sec { margin-bottom: 1rem; padding-bottom: 1rem; }
+    .on-bloque-title--sec { font-size: .95rem; color: var(--color-mid); }
+    .on-bloque--sec .on-lista li { font-size: .8rem; padding: .28rem 0; }
+    .on-bloque--sec .on-bloque-tagline { font-size: .72rem; }
+
+
   </style>
 </head>
 <body>
@@ -831,25 +935,31 @@
             </div>
           </div>
 
+
           <!-- RAMA 2: 2 Nómadas Polígono Levante Coffee -->
-          <div class="rama-card">
+          <div class="rama-card rama-card--wide">
             <div class="rama-img">
-              <!-- IMAGEN RAMA 2: sustituye src -->
-              <img src="https://picsum.photos/seed/coffee/700/525" alt="2 Nómadas Polígono Levante Coffee, Mallorca" loading="lazy" />
+              <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=1200&q=80&auto=format&fit=crop" alt="2 Nómadas Polígono Levante Coffee, Mallorca" loading="lazy" />
               <span class="rama-tag">Coffee & Gastro</span>
             </div>
             <div class="rama-body">
               <h3 class="rama-name">2 Nómadas Polígono Levante Coffee</h3>
-              <p class="rama-desc">Nuestro rincón de barrio con corazón viajero. Café de especialidad, bocados de fusión y un ambiente cercano donde el día empieza con sabor.</p>
-              <div class="rama-location"><i class="fa-solid fa-location-dot"></i> Polígono de Levante, Mallorca</div>
-              <p style="font-size:.8rem;color:var(--color-accent);font-style:italic;margin-top:.2rem;">Próximamente – más detalles en nuestras redes</p>
+              <p class="rama-desc">Nuestro rincón de barrio con corazón viajero. Café con carácter, desayunos que arrancan la mañana, aperitivo con firma propia y bocados con guiño nómada.</p>
+              <div class="rama-location"><i class="fa-solid fa-location-dot"></i> C/ de l'Hort de les Ànimes · Centro Comercial Torre Mariona, Mallorca</div>
+              <div class="sub-ramas">
+                <div class="sub-rama"><i class="fa-solid fa-mug-hot"></i><div><strong>Cafés y Desayunos</strong> – Espresso, lattes especiales, molletes con AOVE y ramallet, croissants y ensaimada nómada.</div></div>
+                <div class="sub-rama sub-rama--destacado"><i class="fa-solid fa-wine-glass"></i><div><strong>Vermucito Rico</strong> – El Yayo, vermuts de la casa y aperitivos con firma 2 Nómadas. El mediodía tiene nombre propio.</div></div>
+                <div class="sub-rama"><i class="fa-solid fa-pepper-hot"></i><div><strong>Tapas, Ultramarinos y Bocatas</strong> – Gildas, torreznos Tokyo Style, conservas de barra, pan cristal con rellenos de autor.</div></div>
+                <div class="sub-rama"><i class="fa-solid fa-beer-mug-empty"></i><div><strong>Birras, Vinos y Copa</strong> – Caña, selección de vinos con D.O., cava, digestivos y destilados premium.</div></div>
+              </div>
             </div>
             <div class="rama-footer">
-              <a class="btn btn-ghost" href="#footer" style="font-size:.85rem;padding:.6rem 1.3rem;">
-                <i class="fa-solid fa-bell"></i> Avísame al abrir
-              </a>
+              <button class="btn btn-primary" style="font-size:.85rem;padding:.6rem 1.3rem;" onclick="openOfertaNomada()">
+                <i class="fa-solid fa-utensils"></i> Ver Oferta Nómada
+              </button>
             </div>
           </div>
+
 
           <!-- RAMA 3: Nuestra Food Truck -->
           <div class="rama-card">
@@ -1026,7 +1136,7 @@
         <h2 class="cta-title">¿Listo para vivir<br>la experiencia nómada?</h2>
         <p class="cta-subtitle">Organiza tu evento, únete a un pop up o cuéntanos tu idea. Estamos aquí para cocinarlo contigo en Mallorca.</p>
         <div class="cta-buttons">
-          <a class="btn btn-accent" href="mailto:reservas@2nomadasfusionfood.com">
+          <a class="btn btn-accent" href="/cdn-cgi/l/email-protection#96e4f3e5f3e4e0f7e5d6a4f8f9fbf7f2f7e5f0e3e5fff9f8f0f9f9f2b8f5f9fb">
             <i class="fa-solid fa-envelope"></i> Contactar con nosotros
           </a>
         </div>
@@ -1067,7 +1177,7 @@
         <div>
           <p class="footer-col-title">Contacto</p>
           <!-- Edita email, teléfono y dirección -->
-          <div class="footer-contact-item"><i class="fa-solid fa-envelope"></i><a class="footer-link" href="mailto:reservas@2nomadasfusionfood.com">reservas@2nomadasfusionfood.com</a></div>
+          <div class="footer-contact-item"><i class="fa-solid fa-envelope"></i><a class="footer-link" href="/cdn-cgi/l/email-protection#42302731273034233102702c2d2f232623312437312b2d2c242d2d266c212d2f"><span class="__cf_email__" data-cfemail="285a4d5b4d5a5e495b681a464745494c495b4e5d5b4147464e47474c064b4745">[email&#160;protected]</span></a></div>
           <div class="footer-contact-item"><i class="fa-solid fa-phone"></i><a class="footer-link" href="tel:+34651152941">+34 651 15 29 41</a></div>
           <div class="footer-contact-item"><i class="fa-solid fa-location-dot"></i><span>Mallorca, España</span></div>
         </div>
@@ -1436,10 +1546,234 @@
     </div>
   </div>
 
+  <!-- Modal Oferta Nómada — pegar antes de </body> -->
+  <div class="exp-modal-overlay" id="ofertaNomadaModal">
+    <div class="exp-modal" style="max-width:720px;">
+      <button class="exp-modal-close" onclick="closeOfertaNomada()">&times;</button>
+
+      <div style="text-align:center;margin-bottom:1.8rem;">
+        <span style="font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--color-accent);">Coffee & Gastro</span>
+        <h2 style="font-family:var(--font-heading);font-size:1.8rem;color:var(--color-dark);margin:.5rem 0 .3rem;">Oferta Nómada</h2>
+        <p style="font-size:.85rem;color:var(--color-mid);font-style:italic;max-width:460px;margin:0 auto .8rem;">Café, desayuno, aperitivo y picoteo con identidad propia.</p>
+        <p style="font-size:.78rem;color:var(--color-light);display:flex;align-items:center;justify-content:center;gap:.4rem;">
+          <i class="fa-solid fa-location-dot" style="color:var(--color-accent);"></i>
+          C/ de l'Hort de les Ànimes · Centro Comercial Torre Mariona, Mallorca
+        </p>
+      </div>
+
+      <!-- ☕ CAFÉS -->
+      <div class="on-bloque">
+        <h3 class="on-bloque-title"><i class="fa-solid fa-mug-hot"></i> Cafés</h3>
+        <p class="on-bloque-tagline">El ritual que abre el día</p>
+        <ul class="on-lista">
+          <li data-precio="">Espresso</li>
+          <li data-precio="">Café Doble</li>
+          <li data-precio="">Americano</li>
+          <li data-precio="">Cortado</li>
+          <li data-precio="">Café con Leche</li>
+          <li data-precio="">Latte Macchiato</li>
+          <li data-precio="">Capuccino</li>
+          <li data-precio="">Café Bombón</li>
+          <li data-precio="">Carajillo</li>
+        </ul>
+        <p class="on-bloque-sub">Especiales</p>
+        <ul class="on-lista">
+          <li data-precio="">Mocaccino <span class="on-sizes">M · L · XL</span></li>
+          <li data-precio="">Vanilla Latte <span class="on-sizes">M · L · XL</span></li>
+          <li data-precio="">Caramel Latte <span class="on-sizes">M · L · XL</span></li>
+          <li data-precio="">Lacao</li>
+        </ul>
+        <p class="on-nota">Leche entera, avena o soja · Siropes de chocolate blanco y caramelo · Toque de cacao o canela</p>
+      </div>
+
+      <!-- 🥐 DESAYUNOS -->
+      <div class="on-bloque">
+        <h3 class="on-bloque-title"><i class="fa-solid fa-bread-slice"></i> Desayunos</h3>
+        <p class="on-bloque-tagline">Para arrancar con todo</p>
+        <p class="on-bloque-sub">Tostadas (Mollete)</p>
+        <ul class="on-lista">
+          <li data-precio="">Clásica — AOVE y tomate de ramallet</li>
+          <li data-precio="">Jamón Serrano — AOVE y tomate de ramallet</li>
+          <li data-precio="">Mahonés — AOVE y tomate de ramallet</li>
+          <li data-precio="">Aguacate, mozzarella, pesto y cherrys</li>
+        </ul>
+        <p class="on-bloque-sub">Dulces</p>
+        <ul class="on-lista">
+          <li data-precio="">Croissant Clásico</li>
+          <li data-precio="">Croissant de Pistachos</li>
+          <li data-precio="">Croissant de Chocolate</li>
+          <li data-precio="">Ensaimada Nómada — cremosa, torrada y crujiente</li>
+        </ul>
+        <p class="on-bloque-sub">Dulce / Salado</p>
+        <ul class="on-lista">
+          <li data-precio="">Croissant de Serrano y Mahonés</li>
+          <li data-precio="">Croissant de Aguacate, Mozzarella, Pesto y Cherrys</li>
+        </ul>
+      </div>
+
+      <!-- 🥪 BOCATAS -->
+      <div class="on-bloque">
+        <h3 class="on-bloque-title"><i class="fa-solid fa-burger"></i> Bocatas</h3>
+        <p class="on-bloque-tagline">Pan cristal, rellenos con criterio</p>
+        <ul class="on-lista">
+          <li data-precio="">Lomo — pesto, camembert, cebolla caramelizada y tomate seco</li>
+          <li data-precio="">Pollo Campero — mayo de curry y mango, cebolla crujiente, limón orejón</li>
+          <li data-precio="">Codillo — chucrut, salsa nómada, kikos especiados y cebolla roja</li>
+          <li data-precio="">Seitán Nómada Style — tomate seco, hummus y hierbas aromáticas</li>
+        </ul>
+      </div>
+
+      <!-- 🍸 VERMUCITO RICO — DESTACADO -->
+      <div class="on-bloque on-bloque--vermouth">
+        <h3 class="on-bloque-title"><i class="fa-solid fa-wine-glass"></i> Vermucito Rico</h3>
+        <p class="on-bloque-tagline">Mediodía con carácter, pausa con intención</p>
+        <div class="on-yayo">
+          <span class="on-yayo-badge"><i class="fa-solid fa-star" style="font-size:.55rem;"></i> Icono de la casa</span>
+          <h4 class="on-yayo-name">El Yayo</h4>
+          <p style="font-size:.85rem;color:var(--color-light);font-style:italic;margin:0 0 .6rem;">Vermouth, gin y sifón</p>
+          <p style="font-size:.85rem;color:var(--color-mid);line-height:1.6;">Un clásico con apellido propio. El Yayo no es un combinado más — es la firma líquida de la casa, el brindis que abre el mediodía y el trago que siempre pide repetición.</p>
+        </div>
+        <p class="on-bloque-sub">Nuestros aperitivos</p>
+        <ul class="on-lista">
+          <li data-precio="">El Yayo — vermouth, gin y sifón</li>
+          <li data-precio="">El Típico — vermouth y sifón</li>
+          <li data-precio="">Aperol Split — aperol, cava, sifón y naranja</li>
+          <li data-precio="">Nómada Split — vermouth, cava, sifón y maracuyá</li>
+        </ul>
+        <p class="on-nota">El aperitivo en 2 Nómadas no es un trámite. Es un ritual de mediodía, un punto de encuentro con copa en mano y barra con personalidad.</p>
+      </div>
+
+      <!-- 🍢 TAPAS -->
+      <div class="on-bloque">
+        <h3 class="on-bloque-title"><i class="fa-solid fa-pepper-hot"></i> Tapas</h3>
+        <p class="on-bloque-tagline">Bocados con rollo propio</p>
+        <ul class="on-lista">
+          <li data-precio="">La Gilda</li>
+          <li data-precio="">Torreznos Tokyo Style</li>
+          <li data-precio="">Pilotes de mi Tía la India</li>
+          <li data-precio="">Tortilla de Sobrasada y Miel</li>
+          <li data-precio="">Tomate Aliñao</li>
+        </ul>
+      </div>
+
+      <!-- 🥫 ULTRAMARINOS -->
+      <div class="on-bloque">
+        <h3 class="on-bloque-title"><i class="fa-solid fa-jar"></i> Ultramarinos</h3>
+        <p class="on-bloque-tagline">Conservas y bocados de barra con pedigrí</p>
+        <ul class="on-lista">
+          <li data-precio="">Mejillón y Patatilla</li>
+          <li data-precio="">Calamares en su Tinta — alioli cítrico y almendra tostada</li>
+          <li data-precio="">Ventresca de Atún — con su trampó</li>
+        </ul>
+      </div>
+
+      <!-- 🍺 BIRRAS -->
+      <div class="on-bloque">
+        <h3 class="on-bloque-title"><i class="fa-solid fa-beer-mug-empty"></i> Birras</h3>
+        <p class="on-bloque-tagline">La compañera natural del picoteo</p>
+        <ul class="on-lista">
+          <li data-precio="">La Caña</li>
+          <li data-precio="">1906</li>
+          <li data-precio="">Rivera Reposada</li>
+          <li data-precio="">Sin Gluten</li>
+          <li data-precio="">0,0% Tostada</li>
+        </ul>
+      </div>
+
+      <!-- ── SECUNDARIOS (peso visual menor) ── -->
+
+      <!-- 🍽️ MENÚ DEL DÍA -->
+      <div class="on-bloque on-bloque--sec">
+        <h3 class="on-bloque-title on-bloque-title--sec"><i class="fa-solid fa-utensils"></i> Menú del Día</h3>
+        <p class="on-bloque-tagline">Tu mediodía resuelto</p>
+        <ul class="on-lista">
+          <li data-precio="">Menú Completo — primero, segundo y postre</li>
+          <li data-precio="">Medio Menú — primero y segundo</li>
+        </ul>
+      </div>
+
+      <!-- 🧃 ZUMOS -->
+      <div class="on-bloque on-bloque--sec">
+        <h3 class="on-bloque-title on-bloque-title--sec"><i class="fa-solid fa-glass-water"></i> Zumos</h3>
+        <ul class="on-lista">
+          <li data-precio="">Melocotón</li>
+          <li data-precio="">Piña</li>
+          <li data-precio="">Manzana</li>
+          <li data-precio="">Naranja</li>
+        </ul>
+      </div>
+
+      <!-- 🥤 REFRESCOS -->
+      <div class="on-bloque on-bloque--sec">
+        <h3 class="on-bloque-title on-bloque-title--sec"><i class="fa-solid fa-bottle-water"></i> Refrescos</h3>
+        <ul class="on-lista">
+          <li data-precio="">Coca Cola / Coca Cola Zero</li>
+          <li data-precio="">Fanta Limón / Fanta Naranja</li>
+          <li data-precio="">Nestea</li>
+          <li data-precio="">Aquarius Naranja</li>
+          <li data-precio="">Agua con gas / sin gas</li>
+        </ul>
+      </div>
+
+      <!-- 🍷 VINOS -->
+      <div class="on-bloque on-bloque--sec">
+        <h3 class="on-bloque-title on-bloque-title--sec"><i class="fa-solid fa-wine-bottle"></i> Vinos</h3>
+        <p class="on-bloque-tagline">Selección con criterio para acompañar</p>
+        <p class="on-bloque-sub">Tinto</p>
+        <ul class="on-lista">
+          <li data-precio="">Mosaic — D.O. Empordà</li>
+          <li data-precio="">Tamiz — D.O. Ribera del Duero</li>
+          <li data-precio="">Zuazo Gastón — D.O.Ca. Rioja</li>
+        </ul>
+        <p class="on-bloque-sub">Blanco</p>
+        <ul class="on-lista">
+          <li data-precio="">Mosaic — D.O. Empordà</li>
+          <li data-precio="">Rueda — D.O. Rueda</li>
+        </ul>
+        <p class="on-bloque-sub">Cava</p>
+        <ul class="on-lista">
+          <li data-precio="">Cava</li>
+        </ul>
+      </div>
+
+      <!-- 🥃 DIGESTIVOS -->
+      <div class="on-bloque on-bloque--sec">
+        <h3 class="on-bloque-title on-bloque-title--sec"><i class="fa-solid fa-whiskey-glass"></i> Digestivos</h3>
+        <p class="on-bloque-tagline">Para cerrar como manda la tradición</p>
+        <ul class="on-lista">
+          <li data-precio="">Baileys</li>
+          <li data-precio="">Coñac</li>
+          <li data-precio="">Hierbas / Mixtas</li>
+          <li data-precio="">Pacharán</li>
+        </ul>
+      </div>
+
+      <!-- 🍸 LICORES Y DESTILADOS -->
+      <div class="on-bloque on-bloque--sec">
+        <h3 class="on-bloque-title on-bloque-title--sec"><i class="fa-solid fa-martini-glass-citrus"></i> Licores y Destilados</h3>
+        <ul class="on-lista">
+          <li data-precio="">Gin Mare</li>
+          <li data-precio="">Diplomático</li>
+          <li data-precio="">Absolut</li>
+        </ul>
+      </div>
+
+      <!-- Cierre -->
+      <div style="text-align:center;margin-top:1.5rem;padding-top:1.2rem;border-top:1px solid var(--color-surface);">
+        <p style="font-family:var(--font-heading);font-size:.95rem;font-style:italic;color:var(--color-light);max-width:380px;margin:0 auto;">
+          Del primer café al vermucito con pausa, y de ahí al último bocado. Así se vive el Polígono de Levante.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+
+
   <!-- ================================================================
        JAVASCRIPT
        ================================================================ -->
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     /* Header scroll */
     const header = document.getElementById('header');
     const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 60);
@@ -1960,15 +2294,28 @@ const WORKER_URL = 'https://nomadas-worker.matriz-b66.workers.dev/';
     const navObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const id = entry.target.getAttribute('id');
-          navLinks.forEach(link => {
-            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
-          });
+          navLinks.forEach(a => a.classList.remove('active'));
+          const a = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+          if(a) a.classList.add('active');
         }
       });
-    }, { threshold: 0.3 });
+    }, {rootMargin:'-40% 0px -55% 0px'});
     sections.forEach(s => navObserver.observe(s));
 
+    /* Oferta Nómada — modal */
+    function openOfertaNomada() {
+      document.getElementById('ofertaNomadaModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeOfertaNomada() {
+      document.getElementById('ofertaNomadaModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('ofertaNomadaModal').addEventListener('click', function(e) {
+      if (e.target === this) closeOfertaNomada();
+    });
+
   </script>
+
 </body>
 </html>
