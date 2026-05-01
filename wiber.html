@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>2 Nómadas en Wiber · Pedido desde el bus</title>
+
+  <meta name="description" content="Pide desde el bus y recoge al llegar a Wiber Rent a Car Mallorca. Café, bebidas frías, cerveza y especialidades 2 Nómadas." />
+
+  <style>
+    :root {
+      --cream: #f5ead8;
+      --cream-light: #fff8e9;
+      --navy: #10263f;
+      --turquoise: #0a6f78;
+      --olive: #65723a;
+      --red: #8f1f21;
+      --border: rgba(16, 38, 63, 0.14);
+      --shadow: 0 24px 70px rgba(16, 38, 63, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--cream);
+      color: var(--navy);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top right, rgba(10,111,120,.20), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(143,31,33,.12), transparent 26%),
+        var(--cream);
+    }
+
+    .container {
+      width: min(1080px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      padding: 42px 0;
+    }
+
+    .hero-card {
+      width: 100%;
+      border-radius: 30px;
+      padding: 34px 22px;
+      background:
+        radial-gradient(circle at top right, rgba(28,175,188,.25), transparent 34%),
+        linear-gradient(135deg, #fff5e4 0%, #ead9bd 100%);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .kicker {
+      margin: 0 0 14px;
+      color: var(--red);
+      font-size: .75rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.7rem, 12vw, 6.5rem);
+      line-height: .88;
+      letter-spacing: -.07em;
+      text-transform: uppercase;
+    }
+
+    .claim {
+      margin: 24px 0 12px;
+      font-size: clamp(2rem, 8vw, 4.2rem);
+      line-height: .95;
+      font-weight: 950;
+      color: var(--turquoise);
+    }
+
+    .subclaim {
+      max-width: 680px;
+      margin: 0 0 10px;
+      font-size: 1.18rem;
+      font-weight: 800;
+    }
+
+    .trilingual,
+    .tags,
+    .microcopy {
+      color: rgba(16,38,63,.72);
+      font-weight: 750;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      min-height: 54px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 20px;
+      border-radius: 999px;
+      border: 2px solid var(--navy);
+      background: var(--cream-light);
+      color: var(--navy);
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: 950;
+      letter-spacing: .04em;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--navy);
+      color: var(--cream-light);
+    }
+
+    section.block {
+      margin: 0 auto 28px;
+      padding: 28px 20px;
+      border-radius: 24px;
+      background: rgba(255,248,233,.86);
+      border: 1px solid var(--border);
+    }
+
+    h2 {
+      margin: 0 0 18px;
+      font-size: clamp(1.8rem, 6vw, 3rem);
+      line-height: 1;
+      letter-spacing: -.04em;
+    }
+
+    h3 {
+      margin: 0 0 8px;
+    }
+
+    p {
+      line-height: 1.55;
+    }
+
+    .steps,
+    .recommended,
+    .dual {
+      display: grid;
+      gap: 14px;
+    }
+
+    .card,
+    .menu-category,
+    .product-row,
+    .order-item {
+      background: #fffaf0;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .step-number {
+      width: 38px;
+      height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--red);
+      color: white;
+      font-weight: 950;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      display: inline-block;
+      margin-top: 8px;
+      color: var(--turquoise);
+      font-size: 1.25rem;
+      font-weight: 950;
+    }
+
+    .menu {
+      display: grid;
+      gap: 18px;
+    }
+
+    .menu-category h3 {
+      color: var(--olive);
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    .product-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 10px;
+      padding: 14px;
+    }
+
+    .product-name {
+      font-weight: 950;
+    }
+
+    .product-detail {
+      display: block;
+      margin-top: 4px;
+      color: rgba(16,38,63,.66);
+      font-size: .9rem;
+    }
+
+    .product-price {
+      font-size: 1.1rem;
+      font-weight: 950;
+    }
+
+    .order {
+      background:
+        radial-gradient(circle at top left, rgba(10,111,120,.16), transparent 30%),
+        var(--cream-light);
+    }
+
+    .warning {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(143,31,33,.1);
+      color: var(--red);
+      font-weight: 900;
+    }
+
+    .order-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .order-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 14px;
+    }
+
+    .qty-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .qty-controls button {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 2px solid var(--navy);
+      background: var(--cream-light);
+      color: var(--navy);
+      font-size: 1.35rem;
+      font-weight: 950;
+      cursor: pointer;
+    }
+
+    .qty {
+      min-width: 28px;
+      text-align: center;
+      font-weight: 950;
+    }
+
+    .total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 22px 0;
+      padding: 18px;
+      border-radius: 18px;
+      background: var(--navy);
+      color: var(--cream-light);
+    }
+
+    .total strong {
+      font-size: 1.8rem;
+    }
+
+    .form {
+      display: grid;
+      gap: 10px;
+    }
+
+    .form label {
+      font-weight: 950;
+    }
+
+    .form input,
+    .form select,
+    .form textarea {
+      width: 100%;
+      min-height: 52px;
+      border-radius: 14px;
+      border: 2px solid rgba(16,38,63,.18);
+      padding: 12px 14px;
+      font: inherit;
+      background: #fffaf0;
+      color: var(--navy);
+    }
+
+    .error {
+      min-height: 22px;
+      color: var(--red);
+      font-weight: 950;
+    }
+
+    .whatsapp-btn {
+      width: 100%;
+      margin-top: 6px;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 34px 18px 50px;
+      color: rgba(16,38,63,.78);
+    }
+
+    .footer strong {
+      color: var(--navy);
+    }
+
+    .sticky-cta {
+      position: fixed;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      z-index: 20;
+      display: none;
+      justify-content: center;
+    }
+
+    .sticky-cta a {
+      width: min(520px, 100%);
+      box-shadow: 0 14px 40px rgba(16,38,63,.28);
+    }
+
+    @media (min-width: 760px) {
+      .hero-card {
+        padding: 72px 56px;
+      }
+
+      section.block {
+        padding: 34px 30px;
+      }
+
+      .steps {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .recommended {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .dual {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <header class="hero container" id="top">
+      <div class="hero-card">
+        <p class="kicker">2 Nómadas Fusión Food · By Be Bombage</p>
+
+        <h1>2 Nómadas en Wiber</h1>
+
+        <p class="claim">
+          Pide desde el bus.<br>
+          Recoge al llegar.
+        </p>
+
+        <p class="subclaim">
+          Bienvenido a Mallorca. Comienzan tus vacaciones.
+        </p>
+
+        <p class="trilingual">
+          Order from the shuttle · Im Bus bestellen
+        </p>
+
+        <p class="tags">
+          Cold Drinks · Coffee · Beer · Fusion Food
+        </p>
+
+        <div class="actions">
+          <a href="#wiber-pedido" class="btn btn-primary">Pedir desde el bus</a>
+          <a href="#wiber-carta" class="btn">Ver carta</a>
+          <a href="#wiber-ubicacion" class="btn">Dónde estamos</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="block container">
+      <h2>¿Cómo funciona?</h2>
+
+      <div class="steps">
+        <article class="card">
+          <span class="step-number">1</span>
+          <h3>Pide desde el bus</h3>
+          <p>Elige café, bebidas frías, cerveza o especialidades durante el trayecto.</p>
+        </article>
+
+        <article class="card">
+          <span class="step-number">2</span>
+          <h3>Te confirmamos por WhatsApp</h3>
+          <p>No se prepara automáticamente. Primero confirmamos disponibilidad.</p>
+        </article>
+
+        <article class="card">
+          <span class="step-number">3</span>
+          <h3>Recoge al llegar</h3>
+          <p>Te esperamos en el punto 2 Nómadas dentro de Wiber Rent a Car.</p>
+        </article>
+      </div>
+
+      <p class="microcopy">
+        Pago en el punto de recogida · Pedido sujeto a disponibilidad · IVA incluido
+      </p>
+    </section>
+
+    <section id="wiber-ubicacion" class="block container">
+      <h2>Estamos en Wiber Rent a Car Mallorca</h2>
+      <p>
+        Una parada rápida para tomar algo frío, un café con carácter o un bocado nómada
+        antes de empezar —o terminar— tu viaje.
+      </p>
+      <p class="microcopy">
+        Servicio rápido · Para tomar aquí o llevar · IVA incluido
+      </p>
+    </section>
+
+    <section class="block container">
+      <h2>Lo que más apetece ahora</h2>
+
+      <div class="recommended">
+        <article class="card">
+          <h3>Cold Matcha Latte NÓMADA</h3>
+          <p>Frío, cremoso y con energía limpia.</p>
+          <strong class="price">6,00 €</strong>
+        </article>
+
+        <article class="card">
+          <h3>Cold Chai Elephant</h3>
+          <p>Especiado, dulce y peligroso.</p>
+          <strong class="price">6,00 €</strong>
+        </article>
+
+        <article class="card">
+          <h3>El Yayo</h3>
+          <p>Vermut, gin y sifón. Mallorca en modo señor con flow.</p>
+          <strong class="price">6,00 €</strong>
+        </article>
+
+        <article class="card">
+          <h3>Cerveza barril 30 cl</h3>
+          <p>La solución oficial al calor.</p>
+          <strong class="price">4,00 €</strong>
+        </article>
+
+        <article class="card">
+          <h3>Espresso</h3>
+          <p>Pequeño, rápido y necesario.</p>
+          <strong class="price">2,00 €</strong>
+        </article>
+
+        <article class="card">
+          <h3>Agua 50 cl</h3>
+          <p>Porque Mallorca aprieta.</p>
+          <strong class="price">2,00 €</strong>
+        </article>
+      </div>
+    </section>
+
+    <section id="wiber-carta" class="block container">
+      <h2>Carta Wiber</h2>
+      <div class="menu" id="menu-list"></div>
+    </section>
+
+    <section id="wiber-pedido" class="block container order">
+      <h2>Pedir desde el bus</h2>
+
+      <p>
+        Haz tu pedido durante el trayecto y recógelo al llegar a Wiber.
+      </p>
+
+      <p class="warning">
+        No se prepara automáticamente hasta confirmación por WhatsApp.
+      </p>
+
+      <div id="order-list" class="order-list"></div>
+
+      <div class="total">
+        <span>Total estimado</span>
+        <strong id="total">0,00 €</strong>
+      </div>
+
+      <div class="form">
+        <label for="customer-name">Nombre *</label>
+        <input id="customer-name" type="text" placeholder="Ej: Laura" autocomplete="name" />
+
+        <label for="customer-status">Situación *</label>
+        <select id="customer-status">
+          <option value="">Selecciona una opción</option>
+          <option value="Estoy en el bus hacia Wiber">Estoy en el bus hacia Wiber</option>
+          <option value="Ya estoy en Wiber">Ya estoy en Wiber</option>
+          <option value="Estoy devolviendo el coche">Estoy devolviendo el coche</option>
+        </select>
+
+        <label for="customer-note">Nota opcional</label>
+        <textarea id="customer-note" rows="3" placeholder="Ej: llegamos en 5 minutos, sin hielo, etc."></textarea>
+
+        <p id="error" class="error" aria-live="polite"></p>
+
+        <button type="button" id="whatsapp-btn" class="btn btn-primary whatsapp-btn">
+          Enviar pedido por WhatsApp
+        </button>
+      </div>
+    </section>
+
+    <section class="block container">
+      <div class="dual">
+        <article class="card">
+          <h2>Si llegas</h2>
+          <p>
+            Acabas de aterrizar. Tienes coche, sol y vacaciones por delante.
+            Antes de arrancar: un café, una bebida fría o algo rápido.
+            Mallorca empieza mejor así.
+          </p>
+        </article>
+
+        <article class="card">
+          <h2>Si te vas</h2>
+          <p>
+            ¿Te vas? Última parada antes del aeropuerto.
+            Que el final de tus vacaciones no sepa a máquina expendedora.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="block container">
+      <h2>Quiénes somos</h2>
+      <p>
+        Somos 2 Nómadas Fusión Food · By Be Bombage.
+        Cocina viajera, bebidas frías y café con carácter.
+        Nacimos para mezclar sabores, culturas y momentos.
+        Hoy estamos aquí, en Wiber, para que tu viaje empiece —o termine— con algo mejor que lo de siempre.
+      </p>
+    </section>
+
+    <footer class="footer container">
+      <strong>2 Nómadas Fusión Food · By Be Bombage</strong>
+      <p>Wiber Rent a Car Mallorca</p>
+      <p>Instagram: @2.nomadas</p>
+      <p>Precios con IVA incluido · Prices incl. VAT · Preise inkl. MwSt.</p>
+      <p>Pedido sujeto a disponibilidad y confirmación por WhatsApp.</p>
+    </footer>
+
+    <div class="sticky-cta" id="sticky-cta">
+      <a href="#wiber-pedido" class="btn btn-primary">Pedir desde el bus</a>
+    </div>
+  </main>
+
+  <script>
+    const CATALOGO = [
+      {
+        categoria: "BEBIDAS FRÍAS · COLD DRINKS · KALTE GETRÄNKE",
+        productos: [
+          { id: "agua-50", nombre: "Agua", detalle: "50 cl", precio: 2 },
+          { id: "agua-grande", nombre: "Agua grande", detalle: "1,5 L", precio: 4 },
+          { id: "agua-gas", nombre: "Agua con gas", detalle: "50 cl", precio: 3 },
+          { id: "coca-cola", nombre: "Coca-Cola / Coca-Cola Zero", detalle: "Lata 33 cl", precio: 3 },
+          { id: "fanta", nombre: "Fanta Naranja / Fanta Limón", detalle: "Lata 33 cl", precio: 3 }
+        ]
+      },
+      {
+        categoria: "CERVEZA · BEER · BIER",
+        productos: [
+          { id: "cerveza-30", nombre: "Cerveza barril", detalle: "30 cl", precio: 4 },
+          { id: "cerveza-50", nombre: "Cerveza barril", detalle: "50 cl", precio: 6 },
+          { id: "sin-alcohol", nombre: "Sin alcohol 0,0", detalle: "Botella 33 cl", precio: 4 }
+        ]
+      },
+      {
+        categoria: "CAFÉ · COFFEE · KAFFEE",
+        productos: [
+          { id: "espresso", nombre: "Espresso", detalle: "", precio: 2 },
+          { id: "cafe-leche", nombre: "Café con leche", detalle: "", precio: 3 },
+          { id: "cappuccino", nombre: "Cappuccino", detalle: "", precio: 3 }
+        ]
+      },
+      {
+        categoria: "ESPECIALIDADES · SPECIALS · SPEZIALITÄTEN",
+        productos: [
+          { id: "matcha", nombre: "Cold Matcha Latte NÓMADA", detalle: "Vaso 450 ml · helado", precio: 6 },
+          { id: "chai", nombre: "Cold Chai Elephant", detalle: "Vaso 450 ml · helado", precio: 6 },
+          { id: "frappe", nombre: "Frappe Latte NÓMADA", detalle: "Vaso 450 ml · con hielo", precio: 6 },
+          { id: "yayo", nombre: "El Yayo", detalle: "Vermut · Gin · Sifón", precio: 6 },
+          { id: "aperol", nombre: "Aperol Spritz", detalle: "", precio: 8 }
+        ]
+      }
+    ];
+
+    const WHATSAPP_NUMBER = "34651152941";
+    const carrito = {};
+
+    function todosProductos() {
+      return CATALOGO.flatMap(categoria => categoria.productos);
+    }
+
+    function formatoEuro(valor) {
+      return valor.toLocaleString("es-ES", {
+        style: "currency",
+        currency: "EUR"
+      });
+    }
+
+    function renderCarta() {
+      const menuList = document.getElementById("menu-list");
+      const orderList = document.getElementById("order-list");
+
+      menuList.innerHTML = "";
+      orderList.innerHTML = "";
+
+      CATALOGO.forEach(categoria => {
+        const bloque = document.createElement("div");
+        bloque.className = "menu-category";
+
+        const titulo = document.createElement("h3");
+        titulo.textContent = categoria.categoria;
+        bloque.appendChild(titulo);
+
+        categoria.productos.forEach(producto => {
+          carrito[producto.id] = 0;
+
+          const fila = document.createElement("div");
+          fila.className = "product-row";
+          fila.innerHTML = `
+            <div>
+              <span class="product-name">${producto.nombre}</span>
+              ${producto.detalle ? `<span class="product-detail">${producto.detalle}</span>` : ""}
+            </div>
+            <span class="product-price">${formatoEuro(producto.precio)}</span>
+          `;
+          bloque.appendChild(fila);
+
+          const pedidoItem = document.createElement("div");
+          pedidoItem.className = "order-item";
+          pedidoItem.innerHTML = `
+            <div>
+              <div class="product-name">${producto.nombre}</div>
+              ${producto.detalle ? `<span class="product-detail">${producto.detalle}</span>` : ""}
+              <strong>${formatoEuro(producto.precio)}</strong>
+            </div>
+            <div class="qty-controls">
+              <button type="button" data-action="minus" data-id="${producto.id}" aria-label="Quitar ${producto.nombre}">−</button>
+              <span class="qty" id="qty-${producto.id}">0</span>
+              <button type="button" data-action="plus" data-id="${producto.id}" aria-label="Añadir ${producto.nombre}">+</button>
+            </div>
+          `;
+          orderList.appendChild(pedidoItem);
+        });
+
+        menuList.appendChild(bloque);
+      });
+    }
+
+    function actualizarTotal() {
+      let total = 0;
+
+      todosProductos().forEach(producto => {
+        const cantidad = carrito[producto.id] || 0;
+        total += producto.precio * cantidad;
+
+        const qty = document.getElementById(`qty-${producto.id}`);
+        if (qty) qty.textContent = cantidad;
+      });
+
+      document.getElementById("total").textContent = formatoEuro(total);
+    }
+
+    function productosSeleccionados() {
+      return todosProductos()
+        .filter(producto => carrito[producto.id] > 0)
+        .map(producto => ({
+          ...producto,
+          cantidad: carrito[producto.id],
+          subtotal: producto.precio * carrito[producto.id]
+        }));
+    }
+
+    function cambiarCantidad(event) {
+      const boton = event.target.closest("button[data-action][data-id]");
+      if (!boton) return;
+
+      const id = boton.dataset.id;
+      const action = boton.dataset.action;
+
+      if (action === "plus") carrito[id] += 1;
+      if (action === "minus") carrito[id] = Math.max(0, carrito[id] - 1);
+
+      actualizarTotal();
+    }
+
+    function crearMensajeWhatsApp() {
+      const nombre = document.getElementById("customer-name").value.trim();
+      const situacion = document.getElementById("customer-status").value;
+      const nota = document.getElementById("customer-note").value.trim();
+      const error = document.getElementById("error");
+      const seleccionados = productosSeleccionados();
+
+      error.textContent = "";
+
+      if (!seleccionados.length) {
+        error.textContent = "Añade al menos un producto al pedido.";
+        return null;
+      }
+
+      if (!nombre) {
+        error.textContent = "Escribe tu nombre para poder identificar el pedido.";
+        return null;
+      }
+
+      if (!situacion) {
+        error.textContent = "Selecciona si estás en el bus, en Wiber o devolviendo el coche.";
+        return null;
+      }
+
+      const total = seleccionados.reduce((sum, item) => sum + item.subtotal, 0);
+
+      const pedido = seleccionados
+        .map(item => `- ${item.cantidad} x ${item.nombre}${item.detalle ? " (" + item.detalle + ")" : ""} — ${formatoEuro(item.subtotal)}`)
+        .join("\n");
+
+      return `Hola 2 Nómadas, quiero hacer este pedido para recoger en Wiber Rent a Car:
+
+Nombre: ${nombre}
+Situación: ${situacion}
+
+Pedido:
+${pedido}
+
+Total estimado: ${formatoEuro(total)}
+Nota: ${nota || "Sin nota"}
+
+Pago en el punto de recogida.
+Pedido sujeto a disponibilidad y confirmación por WhatsApp.`;
+    }
+
+    function enviarWhatsApp() {
+      const mensaje = crearMensajeWhatsApp();
+      if (!mensaje) return;
+
+      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+
+    function activarStickyCTA() {
+      const sticky = document.getElementById("sticky-cta");
+      const hero = document.getElementById("top");
+
+      if (!("IntersectionObserver" in window)) {
+        sticky.style.display = "flex";
+        return;
+      }
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          sticky.style.display = entry.isIntersecting ? "none" : "flex";
+        });
+      });
+
+      observer.observe(hero);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      renderCarta();
+      actualizarTotal();
+
+      document.getElementById("order-list").addEventListener("click", cambiarCantidad);
+      document.getElementById("whatsapp-btn").addEventListener("click", enviarWhatsApp);
+
+      activarStickyCTA();
+    });
+  </script>
+</body>
+</html>
