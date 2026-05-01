@@ -2,814 +2,509 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>2 Nómadas en Wiber · Pedido desde el bus</title>
-
-  <meta name="description" content="Pide desde el bus y recoge al llegar a Wiber Rent a Car Mallorca. Café, bebidas frías, cerveza y especialidades 2 Nómadas." />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="theme-color" content="#1A2B4A" />
+  <title>2 Nómadas en Wiber · Pide desde el bus</title>
+  <meta name="description" content="Pide desde el bus. Recoge al llegar a Wiber Rent a Car Mallorca. Baos, tapas, cold drinks, café y más." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --cream: #f5ead8;
-      --cream-light: #fff8e9;
-      --navy: #10263f;
-      --turquoise: #0a6f78;
-      --olive: #65723a;
-      --red: #8f1f21;
-      --border: rgba(16, 38, 63, 0.14);
-      --shadow: 0 24px 70px rgba(16, 38, 63, 0.16);
+      --crema:#F4EDD8;--crema-dark:#EAE0C8;--marino:#1A2B4A;--turquesa:#2A9D8F;
+      --oliva:#5C6B32;--rojo:#D62828;--rojo-dk:#B02020;--oro:#C8963C;
+      --blanco:#FFFFFF;--gris:#8A8070;--marino-claro:#2E4068;
+      --shadow:0 4px 20px rgba(26,43,74,.13);--radius:14px;--radius-sm:8px;
     }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--cream);
-      color: var(--navy);
-    }
-
-    a {
-      color: inherit;
-    }
-
-    .page {
-      min-height: 100vh;
-      background:
-        radial-gradient(circle at top right, rgba(10,111,120,.20), transparent 30%),
-        radial-gradient(circle at bottom left, rgba(143,31,33,.12), transparent 26%),
-        var(--cream);
-    }
-
-    .container {
-      width: min(1080px, calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .hero {
-      min-height: 92vh;
-      display: flex;
-      align-items: center;
-      padding: 42px 0;
-    }
-
-    .hero-card {
-      width: 100%;
-      border-radius: 30px;
-      padding: 34px 22px;
-      background:
-        radial-gradient(circle at top right, rgba(28,175,188,.25), transparent 34%),
-        linear-gradient(135deg, #fff5e4 0%, #ead9bd 100%);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-    }
-
-    .kicker {
-      margin: 0 0 14px;
-      color: var(--red);
-      font-size: .75rem;
-      font-weight: 900;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(2.7rem, 12vw, 6.5rem);
-      line-height: .88;
-      letter-spacing: -.07em;
-      text-transform: uppercase;
-    }
-
-    .claim {
-      margin: 24px 0 12px;
-      font-size: clamp(2rem, 8vw, 4.2rem);
-      line-height: .95;
-      font-weight: 950;
-      color: var(--turquoise);
-    }
-
-    .subclaim {
-      max-width: 680px;
-      margin: 0 0 10px;
-      font-size: 1.18rem;
-      font-weight: 800;
-    }
-
-    .trilingual,
-    .tags,
-    .microcopy {
-      color: rgba(16,38,63,.72);
-      font-weight: 750;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 30px;
-    }
-
-    .btn {
-      min-height: 54px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 20px;
-      border-radius: 999px;
-      border: 2px solid var(--navy);
-      background: var(--cream-light);
-      color: var(--navy);
-      text-decoration: none;
-      text-transform: uppercase;
-      font-weight: 950;
-      letter-spacing: .04em;
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: var(--navy);
-      color: var(--cream-light);
-    }
-
-    section.block {
-      margin: 0 auto 28px;
-      padding: 28px 20px;
-      border-radius: 24px;
-      background: rgba(255,248,233,.86);
-      border: 1px solid var(--border);
-    }
-
-    h2 {
-      margin: 0 0 18px;
-      font-size: clamp(1.8rem, 6vw, 3rem);
-      line-height: 1;
-      letter-spacing: -.04em;
-    }
-
-    h3 {
-      margin: 0 0 8px;
-    }
-
-    p {
-      line-height: 1.55;
-    }
-
-    .steps,
-    .recommended,
-    .dual {
-      display: grid;
-      gap: 14px;
-    }
-
-    .card,
-    .menu-category,
-    .product-row,
-    .order-item {
-      background: #fffaf0;
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 18px;
-    }
-
-    .step-number {
-      width: 38px;
-      height: 38px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background: var(--red);
-      color: white;
-      font-weight: 950;
-      margin-bottom: 10px;
-    }
-
-    .price {
-      display: inline-block;
-      margin-top: 8px;
-      color: var(--turquoise);
-      font-size: 1.25rem;
-      font-weight: 950;
-    }
-
-    .menu {
-      display: grid;
-      gap: 18px;
-    }
-
-    .menu-category h3 {
-      color: var(--olive);
-      text-transform: uppercase;
-      letter-spacing: .04em;
-    }
-
-    .product-row {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 12px;
-      align-items: center;
-      margin-bottom: 10px;
-      padding: 14px;
-    }
-
-    .product-name {
-      font-weight: 950;
-    }
-
-    .product-detail {
-      display: block;
-      margin-top: 4px;
-      color: rgba(16,38,63,.66);
-      font-size: .9rem;
-    }
-
-    .product-price {
-      font-size: 1.1rem;
-      font-weight: 950;
-    }
-
-    .order {
-      background:
-        radial-gradient(circle at top left, rgba(10,111,120,.16), transparent 30%),
-        var(--cream-light);
-    }
-
-    .warning {
-      padding: 12px 14px;
-      border-radius: 14px;
-      background: rgba(143,31,33,.1);
-      color: var(--red);
-      font-weight: 900;
-    }
-
-    .order-list {
-      display: grid;
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    .order-item {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 12px;
-      align-items: center;
-      padding: 14px;
-    }
-
-    .qty-controls {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .qty-controls button {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      border: 2px solid var(--navy);
-      background: var(--cream-light);
-      color: var(--navy);
-      font-size: 1.35rem;
-      font-weight: 950;
-      cursor: pointer;
-    }
-
-    .qty {
-      min-width: 28px;
-      text-align: center;
-      font-weight: 950;
-    }
-
-    .total {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin: 22px 0;
-      padding: 18px;
-      border-radius: 18px;
-      background: var(--navy);
-      color: var(--cream-light);
-    }
-
-    .total strong {
-      font-size: 1.8rem;
-    }
-
-    .form {
-      display: grid;
-      gap: 10px;
-    }
-
-    .form label {
-      font-weight: 950;
-    }
-
-    .form input,
-    .form select,
-    .form textarea {
-      width: 100%;
-      min-height: 52px;
-      border-radius: 14px;
-      border: 2px solid rgba(16,38,63,.18);
-      padding: 12px 14px;
-      font: inherit;
-      background: #fffaf0;
-      color: var(--navy);
-    }
-
-    .error {
-      min-height: 22px;
-      color: var(--red);
-      font-weight: 950;
-    }
-
-    .whatsapp-btn {
-      width: 100%;
-      margin-top: 6px;
-    }
-
-    .footer {
-      text-align: center;
-      padding: 34px 18px 50px;
-      color: rgba(16,38,63,.78);
-    }
-
-    .footer strong {
-      color: var(--navy);
-    }
-
-    .sticky-cta {
-      position: fixed;
-      left: 14px;
-      right: 14px;
-      bottom: 14px;
-      z-index: 20;
-      display: none;
-      justify-content: center;
-    }
-
-    .sticky-cta a {
-      width: min(520px, 100%);
-      box-shadow: 0 14px 40px rgba(16,38,63,.28);
-    }
-
-    @media (min-width: 760px) {
-      .hero-card {
-        padding: 72px 56px;
-      }
-
-      section.block {
-        padding: 34px 30px;
-      }
-
-      .steps {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .recommended {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .dual {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+    body{background:var(--crema);color:var(--marino);font-family:'Lato',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden}
+    .container{max-width:680px;margin:0 auto;padding:0 18px}
+    .section{padding:52px 0}
+    .section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,8vw,3rem);letter-spacing:.04em;color:var(--marino);margin-bottom:20px;line-height:1}
+    .badge{display:inline-block;background:var(--marino);color:var(--crema);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-bottom:12px}
+    .divider{width:48px;height:3px;background:var(--rojo);border-radius:2px;margin:10px 0 22px}
+    .microcopy{font-size:11px;color:var(--gris);letter-spacing:.06em;text-transform:uppercase;margin-top:16px}
+    .btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:16px 24px;border-radius:var(--radius);font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:.06em;cursor:pointer;border:none;transition:transform .15s,background .15s;text-align:center;min-height:56px;text-decoration:none;width:100%}
+    .btn:active{transform:scale(.97)}
+    .btn-primary{background:var(--rojo);color:var(--blanco);box-shadow:0 4px 16px rgba(214,40,40,.35)}
+    .btn-primary:hover{background:var(--rojo-dk)}
+    .btn-secondary{background:var(--marino);color:var(--crema);box-shadow:var(--shadow)}
+    .btn-secondary:hover{background:var(--marino-claro)}
+    .btn-outline{background:transparent;color:var(--marino);border:2px solid var(--marino)}
+    .btn-wa{background:#25D366;color:var(--blanco);box-shadow:0 4px 16px rgba(37,211,102,.35);font-size:1.2rem}
+    .btn-wa:hover{background:#1fba58}
+    .btn-group{display:flex;flex-direction:column;gap:12px;margin-top:22px}
+    /* HERO */
+    #wiber-hero{background:var(--marino);position:relative;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 110% -10%,rgba(42,157,143,.25) 0%,transparent 60%),radial-gradient(ellipse 60% 80% at -10% 110%,rgba(200,150,60,.18) 0%,transparent 55%);pointer-events:none}
+    .hero-inner{position:relative;z-index:2;padding:52px 18px 44px;max-width:680px;margin:0 auto}
+    .hero-brand{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.18em;color:var(--turquesa);margin-bottom:4px}
+    .hero-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+    .hero-eyebrow-line{flex:1;height:1px;background:rgba(244,237,216,.18)}
+    .hero-eyebrow-text{font-size:11px;color:rgba(244,237,216,.45);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+    .hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.2rem,14vw,5.5rem);letter-spacing:.02em;line-height:.95;color:var(--crema);margin-bottom:8px}
+    .hero-title span{color:var(--turquesa)}
+    .hero-subtitle{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.3rem,6vw,2rem);letter-spacing:.06em;color:var(--oro);margin:12px 0 5px}
+    .hero-claim{font-size:1rem;font-weight:300;color:rgba(244,237,216,.8);margin-bottom:5px}
+    .hero-trilingual{font-size:11px;color:rgba(244,237,216,.4);letter-spacing:.08em;text-transform:uppercase;margin-bottom:18px}
+    .hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px}
+    .hero-tag{background:rgba(244,237,216,.08);border:1px solid rgba(244,237,216,.18);color:var(--crema);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:20px}
+    .hero-tag.cold{border-color:var(--turquesa);color:var(--turquesa)}
+    .hero-tag.beer{border-color:var(--oliva);color:#9BBF52}
+    .hero-tag.food{border-color:var(--oro);color:var(--oro)}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    .hero-inner>*{animation:fadeUp .6s ease both}
+    .hero-inner>*:nth-child(1){animation-delay:.05s}.hero-inner>*:nth-child(2){animation-delay:.12s}
+    .hero-inner>*:nth-child(3){animation-delay:.2s}.hero-inner>*:nth-child(4){animation-delay:.28s}
+    .hero-inner>*:nth-child(5){animation-delay:.34s}.hero-inner>*:nth-child(6){animation-delay:.4s}
+    .hero-inner>*:nth-child(7){animation-delay:.46s}.hero-inner>*:nth-child(8){animation-delay:.52s}
+    /* CÓMO FUNCIONA */
+    #wiber-como{background:var(--crema-dark)}
+    .steps{display:flex;flex-direction:column;gap:16px;margin:24px 0}
+    .step{display:flex;align-items:flex-start;gap:16px;background:var(--blanco);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .step-num{flex-shrink:0;width:44px;height:44px;border-radius:50%;background:var(--marino);color:var(--crema);font-family:'Bebas Neue',sans-serif;font-size:1.5rem;display:flex;align-items:center;justify-content:center}
+    .step:nth-child(2) .step-num{background:var(--turquesa)}.step:nth-child(3) .step-num{background:var(--rojo)}
+    .step-body h3{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.06em;margin-bottom:3px}
+    .step-body p{font-size:.88rem;color:var(--gris)}
+    .como-text{background:var(--marino);color:var(--crema);border-radius:var(--radius);padding:18px 20px;font-size:.93rem;line-height:1.7;margin-top:18px}
+    /* UBICACIÓN */
+    .ubicacion-card{background:var(--blanco);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+    .ubicacion-card h3{font-family:'Bebas Neue',sans-serif;font-size:1.35rem;letter-spacing:.05em;margin:8px 0 10px}
+    .ubicacion-card p{font-size:.93rem;color:#4A4038;line-height:1.7}
+    /* RECOMENDADOS */
+    #wiber-recomendados{background:var(--crema-dark)}
+    .cards-grid{display:flex;flex-direction:column;gap:11px}
+    .prod-card{background:var(--blanco);border-radius:var(--radius);padding:14px 16px;display:flex;align-items:center;gap:12px;box-shadow:var(--shadow)}
+    .prod-emoji{font-size:1.8rem;flex-shrink:0;width:44px;text-align:center}
+    .prod-info{flex:1}
+    .prod-name{font-weight:900;font-size:.95rem;color:var(--marino)}
+    .prod-desc{font-size:.78rem;color:var(--gris);margin-top:2px}
+    .prod-price{font-family:'Bebas Neue',sans-serif;font-size:1.45rem;letter-spacing:.03em;color:var(--marino);flex-shrink:0}
+    .prod-price.cold{color:var(--turquesa)}.prod-price.beer{color:var(--oliva)}.prod-price.coffee{color:var(--oro)}.prod-price.food{color:var(--rojo)}
+    /* CARTA */
+    #wiber-carta{background:var(--blanco)}
+    .cat-header{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:var(--radius-sm);margin-bottom:2px;margin-top:22px}
+    .cat-header.bao{background:var(--marino)}.cat-header.tapas{background:var(--oliva)}.cat-header.salads{background:#3D6B4A}
+    .cat-header.frias{background:var(--turquesa)}.cat-header.cerveza{background:#7A6B32}.cat-header.cafe{background:#6B3D2A}.cat-header.specs{background:var(--rojo)}
+    .cat-icon{font-size:1.3rem}
+    .cat-label{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.08em;color:var(--blanco)}
+    .item-row{display:flex;align-items:center;padding:11px 4px;border-bottom:1px dashed rgba(26,43,74,.1);gap:8px}
+    .item-row:last-child{border-bottom:none}
+    .item-name-wrap{flex:1}
+    .item-name{font-weight:700;font-size:.93rem;color:var(--marino)}
+    .item-detail{font-size:.75rem;color:var(--gris);margin-top:1px;line-height:1.4}
+    .item-price{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.02em;color:var(--marino);width:52px;text-align:right;flex-shrink:0}
+    .counter{display:flex;align-items:center;flex-shrink:0}
+    .counter-btn{width:34px;height:34px;border-radius:50%;border:2px solid var(--marino);background:transparent;color:var(--marino);font-size:1.25rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s,color .15s;padding:0}
+    .counter-btn:active{background:var(--marino);color:var(--crema)}
+    .counter-qty{width:30px;text-align:center;font-family:'Bebas Neue',sans-serif;font-size:1.15rem;color:var(--marino)}
+    /* MÓDULO PEDIDO */
+    #wiber-pedido{background:var(--marino);color:var(--crema)}
+    #wiber-pedido .section-title{color:var(--crema)}
+    #wiber-pedido .divider{background:var(--turquesa)}
+    .pedido-subtitle{font-size:.95rem;color:rgba(244,237,216,.75);margin-bottom:22px;line-height:1.6}
+    .pedido-items{display:flex;flex-direction:column;margin-bottom:22px}
+    .pedido-item-row{display:flex;align-items:center;padding:9px 6px;border-bottom:1px solid rgba(244,237,216,.1);gap:8px}
+    .pedido-item-row:last-child{border-bottom:none}
+    .p-item-name{flex:1;font-size:.87rem;color:var(--crema);line-height:1.35}
+    .p-item-price{font-family:'Bebas Neue',sans-serif;font-size:1.05rem;color:var(--oro);width:44px;text-align:right;flex-shrink:0}
+    .p-counter-btn{width:34px;height:34px;border-radius:50%;border:2px solid rgba(244,237,216,.3);background:transparent;color:var(--crema);font-size:1.25rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s;padding:0}
+    .p-counter-btn:active{background:rgba(244,237,216,.18)}
+    .p-counter-qty{width:26px;text-align:center;font-family:'Bebas Neue',sans-serif;font-size:1.15rem;color:var(--crema)}
+    .cat-sep{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,237,216,.32);padding:13px 6px 3px}
+    .total-bar{background:rgba(244,237,216,.07);border:1px solid rgba(244,237,216,.18);border-radius:var(--radius);padding:15px 18px;display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+    .total-label{font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.08em;color:rgba(244,237,216,.55)}
+    .total-amount{font-family:'Bebas Neue',sans-serif;font-size:1.9rem;letter-spacing:.04em;color:var(--turquesa)}
+    .form-group{margin-bottom:16px}
+    .form-label{display:block;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,237,216,.55);margin-bottom:7px}
+    .form-control{width:100%;background:rgba(244,237,216,.08);border:2px solid rgba(244,237,216,.18);border-radius:var(--radius-sm);color:var(--crema);font-family:'Lato',sans-serif;font-size:1rem;padding:13px 15px;outline:none;transition:border-color .2s;-webkit-appearance:none}
+    .form-control::placeholder{color:rgba(244,237,216,.3)}.form-control:focus{border-color:var(--turquesa)}
+    select.form-control{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23F4EDD8' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:38px}
+    select.form-control option{background:var(--marino);color:var(--crema)}
+    .form-note{font-size:.8rem;color:rgba(244,237,216,.4);margin-top:5px}
+    .aviso-wa{background:rgba(200,150,60,.12);border:1px solid var(--oro);border-radius:var(--radius-sm);padding:11px 15px;margin-bottom:20px;font-size:.83rem;color:var(--oro);line-height:1.55}
+    .alert-error{background:rgba(214,40,40,.2);border:1px solid var(--rojo);border-radius:var(--radius-sm);color:#FF9090;font-size:.86rem;padding:11px 14px;margin-bottom:14px;display:none}
+    .alert-error.visible{display:block}
+    /* VIAJE */
+    #wiber-viaje{background:var(--crema-dark)}
+    .viaje-cards{display:flex;flex-direction:column;gap:14px}
+    .viaje-card{border-radius:var(--radius);padding:26px 22px;box-shadow:var(--shadow)}
+    .viaje-card.llegas{background:var(--marino);color:var(--crema)}.viaje-card.tevas{background:var(--blanco);color:var(--marino);border:2px solid var(--marino)}
+    .viaje-card-icon{font-size:2rem;margin-bottom:10px}
+    .viaje-card h3{font-family:'Bebas Neue',sans-serif;font-size:1.9rem;letter-spacing:.04em;margin-bottom:10px;line-height:1}
+    .viaje-card.llegas h3{color:var(--turquesa)}.viaje-card.tevas h3{color:var(--rojo)}
+    .viaje-card p{font-size:.92rem;line-height:1.75}
+    .viaje-card.llegas p{color:rgba(244,237,216,.8)}.viaje-card.tevas p{color:#4A4038}
+    /* ABOUT */
+    #wiber-about{background:var(--blanco)}
+    .about-box{background:var(--crema);border-radius:var(--radius);padding:26px 22px;border-left:4px solid var(--rojo)}
+    .about-box p{font-size:.93rem;line-height:1.8;color:#3A3028}.about-box p+p{margin-top:10px}
+    /* FOOTER */
+    #wiber-footer{background:var(--marino);color:var(--crema);padding:34px 0 48px;text-align:center}
+    .footer-brand{font-family:'Bebas Neue',sans-serif;font-size:1.35rem;letter-spacing:.06em;margin-bottom:5px}
+    .footer-sub{font-size:.78rem;color:rgba(244,237,216,.45);letter-spacing:.08em;text-transform:uppercase;margin-bottom:18px}
+    .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;margin-bottom:18px}
+    .footer-link{font-size:.83rem;color:var(--turquesa);font-weight:700}
+    .footer-legal{font-size:.73rem;color:rgba(244,237,216,.32);line-height:1.9}
+    /* STICKY */
+    .sticky-cta{position:fixed;bottom:0;left:0;right:0;background:var(--marino);padding:11px 16px;padding-bottom:calc(11px + env(safe-area-inset-bottom));display:flex;gap:10px;box-shadow:0 -4px 24px rgba(26,43,74,.35);z-index:100;transform:translateY(100%);transition:transform .3s ease}
+    .sticky-cta.visible{transform:translateY(0)}
+    .sticky-cta .btn{font-size:.95rem;min-height:48px}
+    .sticky-cta .btn-secondary{max-width:110px;flex-shrink:0;font-size:.82rem}
   </style>
 </head>
-
 <body>
-  <main class="page">
-
-    <header class="hero container" id="top">
-      <div class="hero-card">
-        <p class="kicker">2 Nómadas Fusión Food · By Be Bombage</p>
-
-        <h1>2 Nómadas en Wiber</h1>
-
-        <p class="claim">
-          Pide desde el bus.<br>
-          Recoge al llegar.
-        </p>
-
-        <p class="subclaim">
-          Bienvenido a Mallorca. Comienzan tus vacaciones.
-        </p>
-
-        <p class="trilingual">
-          Order from the shuttle · Im Bus bestellen
-        </p>
-
-        <p class="tags">
-          Cold Drinks · Coffee · Beer · Fusion Food
-        </p>
-
-        <div class="actions">
-          <a href="#wiber-pedido" class="btn btn-primary">Pedir desde el bus</a>
-          <a href="#wiber-carta" class="btn">Ver carta</a>
-          <a href="#wiber-ubicacion" class="btn">Dónde estamos</a>
-        </div>
-      </div>
-    </header>
-
-    <section class="block container">
-      <h2>¿Cómo funciona?</h2>
-
-      <div class="steps">
-        <article class="card">
-          <span class="step-number">1</span>
-          <h3>Pide desde el bus</h3>
-          <p>Elige café, bebidas frías, cerveza o especialidades durante el trayecto.</p>
-        </article>
-
-        <article class="card">
-          <span class="step-number">2</span>
-          <h3>Te confirmamos por WhatsApp</h3>
-          <p>No se prepara automáticamente. Primero confirmamos disponibilidad.</p>
-        </article>
-
-        <article class="card">
-          <span class="step-number">3</span>
-          <h3>Recoge al llegar</h3>
-          <p>Te esperamos en el punto 2 Nómadas dentro de Wiber Rent a Car.</p>
-        </article>
-      </div>
-
-      <p class="microcopy">
-        Pago en el punto de recogida · Pedido sujeto a disponibilidad · IVA incluido
-      </p>
-    </section>
-
-    <section id="wiber-ubicacion" class="block container">
-      <h2>Estamos en Wiber Rent a Car Mallorca</h2>
-      <p>
-        Una parada rápida para tomar algo frío, un café con carácter o un bocado nómada
-        antes de empezar —o terminar— tu viaje.
-      </p>
-      <p class="microcopy">
-        Servicio rápido · Para tomar aquí o llevar · IVA incluido
-      </p>
-    </section>
-
-    <section class="block container">
-      <h2>Lo que más apetece ahora</h2>
-
-      <div class="recommended">
-        <article class="card">
-          <h3>Cold Matcha Latte NÓMADA</h3>
-          <p>Frío, cremoso y con energía limpia.</p>
-          <strong class="price">6,00 €</strong>
-        </article>
-
-        <article class="card">
-          <h3>Cold Chai Elephant</h3>
-          <p>Especiado, dulce y peligroso.</p>
-          <strong class="price">6,00 €</strong>
-        </article>
-
-        <article class="card">
-          <h3>El Yayo</h3>
-          <p>Vermut, gin y sifón. Mallorca en modo señor con flow.</p>
-          <strong class="price">6,00 €</strong>
-        </article>
-
-        <article class="card">
-          <h3>Cerveza barril 30 cl</h3>
-          <p>La solución oficial al calor.</p>
-          <strong class="price">4,00 €</strong>
-        </article>
-
-        <article class="card">
-          <h3>Espresso</h3>
-          <p>Pequeño, rápido y necesario.</p>
-          <strong class="price">2,00 €</strong>
-        </article>
-
-        <article class="card">
-          <h3>Agua 50 cl</h3>
-          <p>Porque Mallorca aprieta.</p>
-          <strong class="price">2,00 €</strong>
-        </article>
-      </div>
-    </section>
-
-    <section id="wiber-carta" class="block container">
-      <h2>Carta Wiber</h2>
-      <div class="menu" id="menu-list"></div>
-    </section>
-
-    <section id="wiber-pedido" class="block container order">
-      <h2>Pedir desde el bus</h2>
-
-      <p>
-        Haz tu pedido durante el trayecto y recógelo al llegar a Wiber.
-      </p>
-
-      <p class="warning">
-        No se prepara automáticamente hasta confirmación por WhatsApp.
-      </p>
-
-      <div id="order-list" class="order-list"></div>
-
-      <div class="total">
-        <span>Total estimado</span>
-        <strong id="total">0,00 €</strong>
-      </div>
-
-      <div class="form">
-        <label for="customer-name">Nombre *</label>
-        <input id="customer-name" type="text" placeholder="Ej: Laura" autocomplete="name" />
-
-        <label for="customer-status">Situación *</label>
-        <select id="customer-status">
-          <option value="">Selecciona una opción</option>
-          <option value="Estoy en el bus hacia Wiber">Estoy en el bus hacia Wiber</option>
-          <option value="Ya estoy en Wiber">Ya estoy en Wiber</option>
-          <option value="Estoy devolviendo el coche">Estoy devolviendo el coche</option>
-        </select>
-
-        <label for="customer-note">Nota opcional</label>
-        <textarea id="customer-note" rows="3" placeholder="Ej: llegamos en 5 minutos, sin hielo, etc."></textarea>
-
-        <p id="error" class="error" aria-live="polite"></p>
-
-        <button type="button" id="whatsapp-btn" class="btn btn-primary whatsapp-btn">
-          Enviar pedido por WhatsApp
-        </button>
-      </div>
-    </section>
-
-    <section class="block container">
-      <div class="dual">
-        <article class="card">
-          <h2>Si llegas</h2>
-          <p>
-            Acabas de aterrizar. Tienes coche, sol y vacaciones por delante.
-            Antes de arrancar: un café, una bebida fría o algo rápido.
-            Mallorca empieza mejor así.
-          </p>
-        </article>
-
-        <article class="card">
-          <h2>Si te vas</h2>
-          <p>
-            ¿Te vas? Última parada antes del aeropuerto.
-            Que el final de tus vacaciones no sepa a máquina expendedora.
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <section class="block container">
-      <h2>Quiénes somos</h2>
-      <p>
-        Somos 2 Nómadas Fusión Food · By Be Bombage.
-        Cocina viajera, bebidas frías y café con carácter.
-        Nacimos para mezclar sabores, culturas y momentos.
-        Hoy estamos aquí, en Wiber, para que tu viaje empiece —o termine— con algo mejor que lo de siempre.
-      </p>
-    </section>
-
-    <footer class="footer container">
-      <strong>2 Nómadas Fusión Food · By Be Bombage</strong>
-      <p>Wiber Rent a Car Mallorca</p>
-      <p>Instagram: @2.nomadas</p>
-      <p>Precios con IVA incluido · Prices incl. VAT · Preise inkl. MwSt.</p>
-      <p>Pedido sujeto a disponibilidad y confirmación por WhatsApp.</p>
-    </footer>
-
-    <div class="sticky-cta" id="sticky-cta">
-      <a href="#wiber-pedido" class="btn btn-primary">Pedir desde el bus</a>
+<!-- HERO -->
+<section id="wiber-hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <p class="hero-brand">2 NÓMADAS FUSIÓN FOOD · BY BE BOMBAGE</p>
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span class="hero-eyebrow-text">× WIBER RENT A CAR MALLORCA ×</span>
+      <div class="hero-eyebrow-line"></div>
     </div>
-  </main>
+    <h1 class="hero-title">2 NÓMADAS<br/><span>EN WIBER</span></h1>
+    <p class="hero-subtitle">Pide desde el bus.<br/>Recoge al llegar.</p>
+    <p class="hero-claim">Bienvenido a Mallorca. Comienzan tus vacaciones.</p>
+    <p class="hero-trilingual">Order from the shuttle · Im Bus bestellen</p>
+    <div class="hero-tags">
+      <span class="hero-tag food">🥙 Baos &amp; Tapas</span>
+      <span class="hero-tag cold">❄️ Cold Drinks</span>
+      <span class="hero-tag">☕ Coffee</span>
+      <span class="hero-tag beer">🍺 Beer</span>
+    </div>
+    <div class="btn-group">
+      <a href="#wiber-pedido" class="btn btn-primary">🛵 PEDIR DESDE EL BUS</a>
+      <div style="display:flex;gap:10px;">
+        <a href="#wiber-carta" class="btn btn-secondary" style="font-size:.9rem;">📋 VER CARTA</a>
+        <a href="#wiber-ubicacion" class="btn btn-outline" style="color:var(--crema);border-color:rgba(244,237,216,.4);font-size:.9rem;">📍 DÓNDE ESTAMOS</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <script>
-    const CATALOGO = [
-      {
-        categoria: "BEBIDAS FRÍAS · COLD DRINKS · KALTE GETRÄNKE",
-        productos: [
-          { id: "agua-50", nombre: "Agua", detalle: "50 cl", precio: 2 },
-          { id: "agua-grande", nombre: "Agua grande", detalle: "1,5 L", precio: 4 },
-          { id: "agua-gas", nombre: "Agua con gas", detalle: "50 cl", precio: 3 },
-          { id: "coca-cola", nombre: "Coca-Cola / Coca-Cola Zero", detalle: "Lata 33 cl", precio: 3 },
-          { id: "fanta", nombre: "Fanta Naranja / Fanta Limón", detalle: "Lata 33 cl", precio: 3 }
-        ]
-      },
-      {
-        categoria: "CERVEZA · BEER · BIER",
-        productos: [
-          { id: "cerveza-30", nombre: "Cerveza barril", detalle: "30 cl", precio: 4 },
-          { id: "cerveza-50", nombre: "Cerveza barril", detalle: "50 cl", precio: 6 },
-          { id: "sin-alcohol", nombre: "Sin alcohol 0,0", detalle: "Botella 33 cl", precio: 4 }
-        ]
-      },
-      {
-        categoria: "CAFÉ · COFFEE · KAFFEE",
-        productos: [
-          { id: "espresso", nombre: "Espresso", detalle: "", precio: 2 },
-          { id: "cafe-leche", nombre: "Café con leche", detalle: "", precio: 3 },
-          { id: "cappuccino", nombre: "Cappuccino", detalle: "", precio: 3 }
-        ]
-      },
-      {
-        categoria: "ESPECIALIDADES · SPECIALS · SPEZIALITÄTEN",
-        productos: [
-          { id: "matcha", nombre: "Cold Matcha Latte NÓMADA", detalle: "Vaso 450 ml · helado", precio: 6 },
-          { id: "chai", nombre: "Cold Chai Elephant", detalle: "Vaso 450 ml · helado", precio: 6 },
-          { id: "frappe", nombre: "Frappe Latte NÓMADA", detalle: "Vaso 450 ml · con hielo", precio: 6 },
-          { id: "yayo", nombre: "El Yayo", detalle: "Vermut · Gin · Sifón", precio: 6 },
-          { id: "aperol", nombre: "Aperol Spritz", detalle: "", precio: 8 }
-        ]
-      }
-    ];
+<!-- CÓMO FUNCIONA -->
+<section id="wiber-como" class="section">
+  <div class="container">
+    <span class="badge">¿Cómo funciona?</span>
+    <h2 class="section-title">Tres pasos,<br/>sin complicaciones.</h2>
+    <div class="divider"></div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body"><h3>Pide desde el bus</h3><p>Elige tus productos y envíanos el pedido por WhatsApp mientras vas de camino.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body"><h3>Te confirmamos por WhatsApp</h3><p>Te confirmamos disponibilidad y tiempo de preparación. Pago en el punto de recogida.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body"><h3>Recoge al llegar a Wiber</h3><p>Busca el punto 2 Nómadas dentro de Wiber Rent a Car. Listo para recoger.</p></div>
+      </div>
+    </div>
+    <div class="como-text">Convierte el trayecto en tu primer momento nómada. Baos, tapas, bebidas frías, café y especialidades listas para recoger en el punto 2 Nómadas dentro de Wiber Rent a Car.</div>
+    <p class="microcopy">Pago en el punto de recogida · Pedido sujeto a disponibilidad · IVA incluido</p>
+  </div>
+</section>
 
-    const WHATSAPP_NUMBER = "34651152941";
-    const carrito = {};
+<!-- UBICACIÓN -->
+<section id="wiber-ubicacion" class="section">
+  <div class="container">
+    <span class="badge">Dónde estamos</span>
+    <h2 class="section-title">Te esperamos<br/>en Wiber.</h2>
+    <div class="divider"></div>
+    <div class="ubicacion-card">
+      <div style="font-size:2.2rem;">📍</div>
+      <h3>Wiber Rent a Car Mallorca</h3>
+      <p>Estamos dentro de Wiber Rent a Car Mallorca. Una parada rápida para tomar algo frío, un café con carácter, un bao o un bocado nómada antes de empezar —o terminar— tu viaje.</p>
+      <p class="microcopy">Servicio rápido · Para tomar aquí o llevar · IVA incluido</p>
+    </div>
+  </div>
+</section>
 
-    function todosProductos() {
-      return CATALOGO.flatMap(categoria => categoria.productos);
+<!-- RECOMENDADOS -->
+<section id="wiber-recomendados" class="section">
+  <div class="container">
+    <span class="badge">Top picks</span>
+    <h2 class="section-title">Lo que más<br/>apetece ahora.</h2>
+    <div class="divider"></div>
+    <div class="cards-grid">
+      <div class="prod-card"><div class="prod-emoji">🥙</div><div class="prod-info"><div class="prod-name">Bao de codillo</div><div class="prod-desc">Codillo desmigado, salsa Nómada y chucrut. Directo al viaje.</div></div><div class="prod-price food">6,50€</div></div>
+      <div class="prod-card"><div class="prod-emoji">🌭</div><div class="prod-info"><div class="prod-name">BaoWurst</div><div class="prod-desc">Bratwurst, pepinillo, cebolla crujiente, mostaza y ketchup.</div></div><div class="prod-price food">6,00€</div></div>
+      <div class="prod-card"><div class="prod-emoji">🍖</div><div class="prod-info"><div class="prod-name">Torreznos Tokyo Style</div><div class="prod-desc">Crujientes, japos y peligrosamente fáciles de compartir.</div></div><div class="prod-price food">8,50€</div></div>
+      <div class="prod-card"><div class="prod-emoji">🍵</div><div class="prod-info"><div class="prod-name">Cold Matcha Latte NÓMADA</div><div class="prod-desc">Frío, cremoso y con energía limpia.</div></div><div class="prod-price cold">6,00€</div></div>
+      <div class="prod-card"><div class="prod-emoji">🍸</div><div class="prod-info"><div class="prod-name">El Yayo</div><div class="prod-desc">Vermut, gin y sifón. Mallorca en modo señor con flow.</div></div><div class="prod-price cold">6,00€</div></div>
+      <div class="prod-card"><div class="prod-emoji">💧</div><div class="prod-info"><div class="prod-name">Agua 50 cl</div><div class="prod-desc">Porque Mallorca aprieta.</div></div><div class="prod-price">2,00€</div></div>
+    </div>
+    <div class="btn-group" style="margin-top:26px;"><a href="#wiber-pedido" class="btn btn-primary">🛵 PEDIR AHORA</a></div>
+  </div>
+</section>
+
+<!-- CARTA COMPLETA -->
+<section id="wiber-carta" class="section">
+  <div class="container">
+    <span class="badge">Carta completa</span>
+    <h2 class="section-title">Todo lo que<br/>tenemos hoy.</h2>
+    <div class="divider"></div>
+    <p style="font-size:.82rem;color:var(--gris);margin-bottom:6px;">Usa los + / − para añadir al pedido. El total se actualiza solo.</p>
+
+    <div class="cat-header bao" style="margin-top:0"><span class="cat-icon">🥙</span><span class="cat-label">PAN BAO · BAOS · BAO BRÖTCHEN</span></div>
+    <div class="item-row" data-id="codillo" data-price="6.5"><div class="item-name-wrap"><div class="item-name">Bao de codillo</div><div class="item-detail">Codillo desmigado, salsa Nómada y chucrut</div></div><div class="counter"><button class="counter-btn minus-btn">−</button><span class="counter-qty">0</span><button class="counter-btn plus-btn">+</button></div><div class="item-price">6,50€</div></div>
+    <div class="item-row" data-id="baowurst" data-price="6"><div class="item-name-wrap"><div class="item-name">BaoWurst</div><div class="item-detail">Bratwurst, pepinillo, cebolla crujiente, mostaza y ketchup</div></div><div class="counter"><button class="counter-btn minus-btn">−</button><span class="counter-qty">0</span><button class="counter-btn plus-btn">+</button></div><div class="item-price">6,00€</div></div>
+    <div class="item-row" data-id="polloasado" data-price="6.5"><div class="item-name-wrap"><div class="item-name">Bao de pollo asado</div><div class="item-detail">Pollo asado, alioli cítrico de romero y cebolla crujiente</div></div><div class="counter"><button class="counter-btn minus-btn">−</button><span class="counter-qty">0</span><button class="counter-btn plus-btn">+</button></div><div class="item-price">6,50€</div></div>
+    <div class="item-row" data-id="baotuna" data-price="6"><div class="item-name-wrap"><div class="item-name">Bao de atún</div><div class="item-detail">Atún, mayo japonesa, cebolleta, cítricos, jengibre y encurtidos</div></div><div class="counter"><button class="counter-btn minus-btn">−</button><span class="counter-qty">0</span><button class="counter-btn plus-btn">+</button></div><div class="item-price">6,00€</div></div>
+    <div class="item-row" data-id="hummus" data-price="5.5"><div class="item-name-wrap"><div class="item-name">Bao de hummus</div><div class="item-detail">Hummus, aceituna Kalamata, pesto de albahaca y tomate seco</div></div><div class="counter"><button class="counter-btn minus-btn">−</button><span class="counter-qty">0</span><button class="counter-btn plus-btn">+</button></div><div class="item-price">5,50€</div></div>
+
+    <div class="cat-header tapas"><span class="cat-icon">🍢</span><span class="cat-label">NOMÁTAPAS · TAPAS · STREET BITES</span></div>
+    <div class="item-row" data-id="torreznos" data-price="8.5"><div class="item-name-wrap"><div class="item-name">Torreznos Tokyo Style</div><div class="item-detail">Torreznos crujientes, salsa japonesa y chips de patata crujiente</div></div><div class="counter"><button class="counter-btn minus-btn">−</button><span class="counter-qty">0</span><button class="counter-btn plus-btn">+</button></div><div class="item-price">8,50€</div></div>
+    <div class="item-row" data-id="gilda" data-price="4"><div class="item-name-wrap"><div class="item-name">Gilda Street</div><div class="item-detail">Aceituna gordal, piparra, encurtido y anchoa blanca · 4,00€/ud</div></div><div class="counter"><button class="counter-btn minus-btn">−</button><span class="counter-qty">0</span><button class="counter-btn plus-btn">+</button></div><div class="item-price">4,00€</div></div>
+    <div class="item-row" data-id="ensaladilla" data-price="7"><div class="item-name-wrap"><div class="item-name">Nuestra ensaladilla rusa</div><div class="item-detail">Patata, zanahoria, huevo, cebolla, pepinillos, atún, anchoa, mayo cítrica y pan crujiente</div></div><div class="counter"><button class="counter-btn minus-btn">−</button><span class="counter-qty">0</span><button class="counter-btn plus-btn">+</button></div><div class="item-price">7,00€</div></div>
+    <div class="item-row" data-id="alitas" data-price="7.5"><div class="item-name-wrap"><div class="item-name">Alitas crujientes Nómada</div><div class="item-detail">Alitas crujientes, lima y secretos de la casa</div></div><div class="counter"><button class="counter-btn minus-btn">−</button><span class="counter-qty">0</span><button class="counter-btn plus-btn">+</button></div><div class="item-price">7,50€</div></div>
+
+    <div class="cat-header salads"><span class="cat-icon">🥗</span><span class="cat-label">ENSALADAS · SALADS · SALATE</span></div>
+    <div class="item-row" data-id="caprese" data-price="12.5"><div class="item-name-wrap"><div class="item-name">Ensalada Caprese Nómada</div><div class="item-detail">Tomate seleccionado, pesto de albahaca, burrata y aceituna Kalamata</div></div><div class="counter"><button class="counter-btn minus-btn">−</button><span class="counter-qty">0</span><button class="counter-btn plus-btn">+</button></div><div class="item-price">12,50€</div></div>
+    <div class="item-row" data-id="pasta" data-price="9.5"><div class="item-name-wrap"><div class="item-name">Ensalada de pasta</div><div class="item-detail">Penne rigate, anchoa, tomate cherry, aceituna gordal, albahaca y tomate seco</div></div><div class="counter"><button class="counter-btn minus-btn">−</button><span class="counter-qty">0</span><button class="counter-btn plus-btn">+</button></div><div class="item-price">9,50€</div></div>
+
+    <div class="cat-header frias"><span class="cat-icon">🧊</span><span class="cat-label">BEBIDAS FRÍAS · COLD DRINKS · KALTE GETRÄNKE</span></div>
+    <div class="item-row" data-id="agua50" data-price="2"><div class="item-name-wrap"><div class="item-name">Agua</div><div class="item-detail">50 cl</div></div><div class="counter"><button class="counter-btn minus-btn">−</button><span class="counter-qty">0</span><button class="counter-btn plus-btn">+</button></div><div class="item-price">2,00€</div></div>
+    <div class="item-row" data-id="agua1l5" data-price="4"><div class="item-name-wrap"><div class="item-name">Agua grande</div><div class="item-detail">1,5 L</div></div><div class="counter"><button class="counter-btn minus-btn">−</button><span class="counter-qty">0</span><button class="counter-btn plus-btn">+</button></div><div class="item-price">4,00€</div></div>
+    <div class="item-row" data-id="aguagas" data-price="3"><div class="item-name-wrap"><div class="item-name">Agua con gas</div><div class="item-detail">50 cl</div></div><div class="counter"><button class="counter-btn minus-btn">−</button><span class="counter-qty">0</span><button class="counter-btn plus-btn">+</button></div><div class="item-price">3,00€</div></div>
+    <div class="item-row" data-id="cocacola" data-price="3"><div class="item-name-wrap"><div class="item-name">Coca-Cola / Coca-Cola Zero</div><div class="item-detail">Lata 33 cl</div></div><div class="counter"><button class="counter-btn minus-btn">−</button><span class="counter-qty">0</span><button class="counter-btn plus-btn">+</button></div><div class="item-price">3,00€</div></div>
+    <div class="item-row" data-id="fanta" data-price="3"><div class="item-name-wrap"><div class="item-name">Fanta Naranja / Fanta Limón</div><div class="item-detail">Lata 33 cl</div></div><div class="counter"><button class="counter-btn minus-btn">−</button><span class="counter-qty">0</span><button class="counter-btn plus-btn">+</button></div><div class="item-price">3,00€</div></div>
+
+    <div class="cat-header cerveza"><span class="cat-icon">🍺</span><span class="cat-label">CERVEZA · BEER · BIER</span></div>
+    <div class="item-row" data-id="cerv30" data-price="4"><div class="item-name-wrap"><div class="item-name">Cerveza barril 30 cl</div><div class="item-detail">Draft beer · Fassbier</div></div><div class="counter"><button class="counter-btn minus-btn">−</button><span class="counter-qty">0</span><button class="counter-btn plus-btn">+</button></div><div class="item-price">4,00€</div></div>
+    <div class="item-row" data-id="cerv50" data-price="6"><div class="item-name-wrap"><div class="item-name">Cerveza barril 50 cl</div><div class="item-detail">Draft beer · Fassbier</div></div><div class="counter"><button class="counter-btn minus-btn">−</button><span class="counter-qty">0</span><button class="counter-btn plus-btn">+</button></div><div class="item-price">6,00€</div></div>
+    <div class="item-row" data-id="sinalc" data-price="4"><div class="item-name-wrap"><div class="item-name">Sin alcohol 0,0</div><div class="item-detail">Botella 33 cl · Alcohol-free · Alkoholfrei</div></div><div class="counter"><button class="counter-btn minus-btn">−</button><span class="counter-qty">0</span><button class="counter-btn plus-btn">+</button></div><div class="item-price">4,00€</div></div>
+
+    <div class="cat-header cafe"><span class="cat-icon">☕</span><span class="cat-label">CAFÉ · COFFEE · KAFFEE</span></div>
+    <div class="item-row" data-id="espresso" data-price="2"><div class="item-name-wrap"><div class="item-name">Espresso</div></div><div class="counter"><button class="counter-btn minus-btn">−</button><span class="counter-qty">0</span><button class="counter-btn plus-btn">+</button></div><div class="item-price">2,00€</div></div>
+    <div class="item-row" data-id="cafeleche" data-price="3"><div class="item-name-wrap"><div class="item-name">Café con leche</div><div class="item-detail">White coffee · Milchkaffee</div></div><div class="counter"><button class="counter-btn minus-btn">−</button><span class="counter-qty">0</span><button class="counter-btn plus-btn">+</button></div><div class="item-price">3,00€</div></div>
+    <div class="item-row" data-id="cappuccino" data-price="3"><div class="item-name-wrap"><div class="item-name">Cappuccino</div></div><div class="counter"><button class="counter-btn minus-btn">−</button><span class="counter-qty">0</span><button class="counter-btn plus-btn">+</button></div><div class="item-price">3,00€</div></div>
+
+    <div class="cat-header specs"><span class="cat-icon">✨</span><span class="cat-label">ESPECIALIDADES · SPECIALS · SPEZIALITÄTEN</span></div>
+    <div class="item-row" data-id="matcha" data-price="6"><div class="item-name-wrap"><div class="item-name">Cold Matcha Latte NÓMADA</div><div class="item-detail">Vaso 450 ml · helado</div></div><div class="counter"><button class="counter-btn minus-btn">−</button><span class="counter-qty">0</span><button class="counter-btn plus-btn">+</button></div><div class="item-price">6,00€</div></div>
+    <div class="item-row" data-id="chai" data-price="6"><div class="item-name-wrap"><div class="item-name">Cold Chai Elephant</div><div class="item-detail">Vaso 450 ml · helado</div></div><div class="counter"><button class="counter-btn minus-btn">−</button><span class="counter-qty">0</span><button class="counter-btn plus-btn">+</button></div><div class="item-price">6,00€</div></div>
+    <div class="item-row" data-id="frappe" data-price="6"><div class="item-name-wrap"><div class="item-name">Frappe Latte NÓMADA</div><div class="item-detail">Vaso 450 ml · con hielo</div></div><div class="counter"><button class="counter-btn minus-btn">−</button><span class="counter-qty">0</span><button class="counter-btn plus-btn">+</button></div><div class="item-price">6,00€</div></div>
+    <div class="item-row" data-id="yayo" data-price="6"><div class="item-name-wrap"><div class="item-name">El Yayo</div><div class="item-detail">Vermut · Gin · Sifón</div></div><div class="counter"><button class="counter-btn minus-btn">−</button><span class="counter-qty">0</span><button class="counter-btn plus-btn">+</button></div><div class="item-price">6,00€</div></div>
+    <div class="item-row" data-id="aperol" data-price="8"><div class="item-name-wrap"><div class="item-name">Aperol Spritz</div></div><div class="counter"><button class="counter-btn minus-btn">−</button><span class="counter-qty">0</span><button class="counter-btn plus-btn">+</button></div><div class="item-price">8,00€</div></div>
+
+    <p class="microcopy" style="margin-top:18px;">PRECIOS CON IVA INCLUIDO · PRICES INCL. VAT · PREISE INKL. MwSt.</p>
+    <div class="btn-group" style="margin-top:22px;"><a href="#wiber-pedido" class="btn btn-primary">🛵 IR AL PEDIDO</a></div>
+  </div>
+</section>
+
+<!-- MÓDULO PEDIDO -->
+<section id="wiber-pedido" class="section">
+  <div class="container">
+    <span class="badge" style="background:var(--turquesa);color:var(--marino);">Pedir desde el bus</span>
+    <h2 class="section-title">Tu pedido.</h2>
+    <div class="divider"></div>
+    <p class="pedido-subtitle">Haz tu pedido durante el trayecto y recógelo al llegar a Wiber.<br/>¿Vas con prisa? Pide ahora, te confirmamos por WhatsApp y lo preparamos.</p>
+    <div class="pedido-items" id="pedido-lista"></div>
+    <div class="total-bar">
+      <span class="total-label">TOTAL ESTIMADO</span>
+      <span class="total-amount" id="pedido-total">0,00€</span>
+    </div>
+    <div class="aviso-wa">⚠️ El pedido no se prepara automáticamente. Te confirmamos disponibilidad por WhatsApp. Pago en el punto de recogida.</div>
+    <div class="alert-error" id="pedido-error"></div>
+    <div class="form-group">
+      <label class="form-label" for="campo-nombre">Nombre *</label>
+      <input type="text" id="campo-nombre" class="form-control" placeholder="Tu nombre" autocomplete="given-name" maxlength="80" />
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="campo-situacion">¿Dónde estás ahora? *</label>
+      <select id="campo-situacion" class="form-control">
+        <option value="">— Selecciona tu situación —</option>
+        <option value="Estoy en el bus hacia Wiber">🚌 Estoy en el bus hacia Wiber</option>
+        <option value="Ya estoy en Wiber">📍 Ya estoy en Wiber</option>
+        <option value="Estoy devolviendo el coche">🔑 Estoy devolviendo el coche</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="campo-nota">Nota opcional</label>
+      <input type="text" id="campo-nota" class="form-control" placeholder="Alergias, preferencias, algo que aclarar…" maxlength="200" />
+      <p class="form-note">Sin nota es perfecto. Solo si necesitas aclarar algo.</p>
+    </div>
+    <button class="btn btn-wa" onclick="enviarPedido()">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.116 1.524 5.847L.057 23.543a.5.5 0 0 0 .608.608l5.713-1.463A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.691-.509-5.228-1.396l-.376-.22-3.887.996.999-3.773-.24-.39A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      ENVIAR PEDIDO POR WHATSAPP
+    </button>
+  </div>
+</section>
+
+<!-- LLEGAS / TE VAS -->
+<section id="wiber-viaje" class="section">
+  <div class="container">
+    <span class="badge">Mallorca empieza fría.</span>
+    <h2 class="section-title">Tu momento<br/>nómada.</h2>
+    <div class="divider"></div>
+    <div class="viaje-cards">
+      <div class="viaje-card llegas"><div class="viaje-card-icon">✈️</div><h3>Si llegas</h3><p>Acabas de aterrizar.<br/>Tienes coche, sol y vacaciones por delante.<br/>Antes de arrancar: un café, una bebida fría, un bao o algo rápido.<br/>Mallorca empieza mejor así.</p></div>
+      <div class="viaje-card tevas"><div class="viaje-card-icon">🛫</div><h3>Si te vas</h3><p>¿Te vas?<br/>Última parada antes del aeropuerto.<br/>Que el final de tus vacaciones no sepa a máquina expendedora.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- QUIÉNES SOMOS -->
+<section id="wiber-about" class="section">
+  <div class="container">
+    <span class="badge">Quiénes somos</span>
+    <h2 class="section-title">2 Nómadas.</h2>
+    <div class="divider"></div>
+    <div class="about-box">
+      <p>Somos 2 Nómadas Fusión Food · By Be Bombage.<br/>Cocina viajera, bebidas frías y café con carácter.</p>
+      <p>Nacimos para mezclar sabores, culturas y momentos.<br/>Hoy estamos aquí, en Wiber, para que tu viaje empiece —o termine— con algo mejor que lo de siempre.</p>
+    </div>
+    <div class="btn-group" style="margin-top:22px;"><a href="#wiber-pedido" class="btn btn-primary">🛵 PEDIR AHORA</a></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="wiber-footer">
+  <div class="container">
+    <div class="footer-brand">2 NÓMADAS FUSIÓN FOOD</div>
+    <div class="footer-sub">BY BE BOMBAGE · WIBER RENT A CAR MALLORCA</div>
+    <div class="footer-links">
+      <a href="https://instagram.com/2.nomadas" target="_blank" rel="noopener" class="footer-link">📸 @2.nomadas</a>
+      <a href="https://2nomadasfusionfood.com" class="footer-link">🌐 Web</a>
+    </div>
+    <div class="footer-legal">Precios con IVA incluido · Prices incl. VAT · Preise inkl. MwSt.<br/>Pedido sujeto a disponibilidad y confirmación por WhatsApp.</div>
+  </div>
+</footer>
+
+<!-- Sticky CTA -->
+<div class="sticky-cta" id="sticky-cta">
+  <a href="#wiber-pedido" class="btn btn-primary" style="flex:1;">🛵 PEDIR DESDE EL BUS</a>
+  <a href="#wiber-carta" class="btn btn-secondary">CARTA</a>
+</div>
+
+<script>
+/* ══════════════════════════════════════════════
+   CATÁLOGO — edita aquí nombres y precios
+   precio: número JS con punto decimal
+   cat: se usa como separador en el módulo pedido
+══════════════════════════════════════════════ */
+const CATALOGO = [
+  {id:'codillo',    nombre:'Bao de codillo',              detalle:'Codillo desmigado, salsa Nómada y chucrut',                             precio:6.5,  cat:'Pan Bao'},
+  {id:'baowurst',   nombre:'BaoWurst',                    detalle:'Bratwurst, pepinillo, cebolla crujiente, mostaza y ketchup',             precio:6,    cat:'Pan Bao'},
+  {id:'polloasado', nombre:'Bao de pollo asado',          detalle:'Pollo asado, alioli cítrico de romero y cebolla crujiente',              precio:6.5,  cat:'Pan Bao'},
+  {id:'baotuna',    nombre:'Bao de atún',                 detalle:'Atún, mayo japonesa, cebolleta, cítricos, jengibre y encurtidos',        precio:6,    cat:'Pan Bao'},
+  {id:'hummus',     nombre:'Bao de hummus',               detalle:'Hummus, aceituna Kalamata, pesto de albahaca y tomate seco',             precio:5.5,  cat:'Pan Bao'},
+  {id:'torreznos',  nombre:'Torreznos Tokyo Style',       detalle:'Torreznos crujientes, salsa japonesa y chips de patata crujiente',       precio:8.5,  cat:'Nomátapas'},
+  {id:'gilda',      nombre:'Gilda Street',                detalle:'Aceituna gordal, piparra, encurtido y anchoa blanca (x unidad)',         precio:4,    cat:'Nomátapas'},
+  {id:'ensaladilla',nombre:'Nuestra ensaladilla rusa',    detalle:'Patata, zanahoria, huevo, cebolla, pepinillos, atún, anchoa, mayo cítrica y pan crujiente', precio:7, cat:'Nomátapas'},
+  {id:'alitas',     nombre:'Alitas crujientes Nómada',    detalle:'Alitas crujientes, lima y secretos de la casa',                         precio:7.5,  cat:'Nomátapas'},
+  {id:'caprese',    nombre:'Ensalada Caprese Nómada',     detalle:'Tomate seleccionado, pesto de albahaca, burrata y aceituna Kalamata',    precio:12.5, cat:'Ensaladas'},
+  {id:'pasta',      nombre:'Ensalada de pasta',           detalle:'Penne rigate, anchoa, tomate cherry, aceituna gordal, albahaca y tomate seco', precio:9.5, cat:'Ensaladas'},
+  {id:'agua50',     nombre:'Agua 50 cl',                  detalle:'',                                                                       precio:2,    cat:'Bebidas frías'},
+  {id:'agua1l5',    nombre:'Agua grande 1,5 L',           detalle:'',                                                                       precio:4,    cat:'Bebidas frías'},
+  {id:'aguagas',    nombre:'Agua con gas 50 cl',          detalle:'',                                                                       precio:3,    cat:'Bebidas frías'},
+  {id:'cocacola',   nombre:'Coca-Cola / Coca-Cola Zero',  detalle:'Lata 33 cl',                                                             precio:3,    cat:'Bebidas frías'},
+  {id:'fanta',      nombre:'Fanta Naranja / Fanta Limón', detalle:'Lata 33 cl',                                                             precio:3,    cat:'Bebidas frías'},
+  {id:'cerv30',     nombre:'Cerveza barril 30 cl',        detalle:'Draft beer',                                                             precio:4,    cat:'Cerveza'},
+  {id:'cerv50',     nombre:'Cerveza barril 50 cl',        detalle:'Draft beer',                                                             precio:6,    cat:'Cerveza'},
+  {id:'sinalc',     nombre:'Sin alcohol 0,0 (bot 33 cl)', detalle:'Alcohol-free',                                                           precio:4,    cat:'Cerveza'},
+  {id:'espresso',   nombre:'Espresso',                    detalle:'',                                                                       precio:2,    cat:'Café'},
+  {id:'cafeleche',  nombre:'Café con leche',              detalle:'White coffee',                                                           precio:3,    cat:'Café'},
+  {id:'cappuccino', nombre:'Cappuccino',                  detalle:'',                                                                       precio:3,    cat:'Café'},
+  {id:'matcha',     nombre:'Cold Matcha Latte NÓMADA',    detalle:'Vaso 450 ml · helado',                                                   precio:6,    cat:'Especialidades'},
+  {id:'chai',       nombre:'Cold Chai Elephant',          detalle:'Vaso 450 ml · helado',                                                   precio:6,    cat:'Especialidades'},
+  {id:'frappe',     nombre:'Frappe Latte NÓMADA',         detalle:'Vaso 450 ml · con hielo',                                                precio:6,    cat:'Especialidades'},
+  {id:'yayo',       nombre:'El Yayo',                     detalle:'Vermut · Gin · Sifón',                                                   precio:6,    cat:'Especialidades'},
+  {id:'aperol',     nombre:'Aperol Spritz',               detalle:'',                                                                       precio:8,    cat:'Especialidades'},
+];
+
+const pedido = {};
+CATALOGO.forEach(p => pedido[p.id] = 0);
+
+function fmt(n){ return n.toFixed(2).replace('.', ',') + '€'; }
+
+function renderPedidoLista(){
+  const lista = document.getElementById('pedido-lista');
+  lista.innerHTML = '';
+  let cat = '';
+  CATALOGO.forEach(prod => {
+    if(prod.cat !== cat){
+      cat = prod.cat;
+      const sep = document.createElement('div');
+      sep.className = 'cat-sep';
+      sep.textContent = cat.toUpperCase();
+      lista.appendChild(sep);
     }
+    const row = document.createElement('div');
+    row.className = 'pedido-item-row';
+    const det = prod.detalle ? `<span style="display:block;font-size:.7rem;color:rgba(244,237,216,.42);margin-top:1px;">${prod.detalle}</span>` : '';
+    row.innerHTML = `<div class="p-item-name">${prod.nombre}${det}</div><div style="display:flex;align-items:center;flex-shrink:0"><button class="p-counter-btn" onclick="cambiarQty('${prod.id}',-1)">−</button><span class="p-counter-qty" id="pqty-${prod.id}">0</span><button class="p-counter-btn" onclick="cambiarQty('${prod.id}',1)">+</button></div><div class="p-item-price">${fmt(prod.precio)}</div>`;
+    lista.appendChild(row);
+  });
+}
 
-    function formatoEuro(valor) {
-      return valor.toLocaleString("es-ES", {
-        style: "currency",
-        currency: "EUR"
-      });
-    }
+function cambiarQty(id, delta){
+  pedido[id] = Math.max(0, (pedido[id]||0) + delta);
+  const pEl = document.getElementById('pqty-'+id);
+  if(pEl) pEl.textContent = pedido[id];
+  document.querySelectorAll('#wiber-carta .item-row[data-id="'+id+'"] .counter-qty')
+    .forEach(el => el.textContent = pedido[id]);
+  actualizarTotal();
+}
 
-    function renderCarta() {
-      const menuList = document.getElementById("menu-list");
-      const orderList = document.getElementById("order-list");
+function actualizarTotal(){
+  const t = CATALOGO.reduce((acc,p) => acc + pedido[p.id]*p.precio, 0);
+  document.getElementById('pedido-total').textContent = fmt(t);
+}
 
-      menuList.innerHTML = "";
-      orderList.innerHTML = "";
+function enviarPedido(){
+  const nombre    = document.getElementById('campo-nombre').value.trim();
+  const situacion = document.getElementById('campo-situacion').value;
+  const nota      = document.getElementById('campo-nota').value.trim();
+  const errorEl   = document.getElementById('pedido-error');
+  const lineas    = CATALOGO.filter(p => pedido[p.id]>0).map(p => {
+    const sub = (pedido[p.id]*p.precio).toFixed(2).replace('.', ',');
+    return '  • '+p.nombre+' x'+pedido[p.id]+' = '+sub+'€';
+  });
+  const total = CATALOGO.reduce((acc,p) => acc + pedido[p.id]*p.precio, 0);
+  const errores = [];
+  if(!lineas.length) errores.push('Añade al menos un producto al pedido.');
+  if(!nombre)        errores.push('Escribe tu nombre.');
+  if(!situacion)     errores.push('Dinos dónde estás ahora.');
+  if(errores.length){
+    errorEl.innerHTML = errores.map(e=>'⚠️ '+e).join('<br/>');
+    errorEl.classList.add('visible');
+    errorEl.scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
+  errorEl.classList.remove('visible');
+  const partes = [
+    'Hola 2 Nómadas, quiero hacer este pedido para recoger en Wiber Rent a Car:','',
+    'Nombre: '+nombre,'Situación: '+situacion,'',
+    'Pedido:', ...lineas,'',
+    'Total estimado: '+fmt(total),
+  ];
+  if(nota) partes.push('Nota: '+nota);
+  partes.push('','Pago en el punto de recogida.','Pedido sujeto a disponibilidad y confirmación por WhatsApp.');
+  window.open('https://wa.me/34651152941?text='+encodeURIComponent(partes.join('\n')),'_blank','noopener,noreferrer');
+}
 
-      CATALOGO.forEach(categoria => {
-        const bloque = document.createElement("div");
-        bloque.className = "menu-category";
+/* Contadores en carta */
+document.getElementById('wiber-carta').addEventListener('click', e => {
+  const btn = e.target.closest('.counter-btn');
+  if(!btn) return;
+  const row = btn.closest('.item-row');
+  if(!row) return;
+  cambiarQty(row.dataset.id, btn.classList.contains('plus-btn') ? 1 : -1);
+});
 
-        const titulo = document.createElement("h3");
-        titulo.textContent = categoria.categoria;
-        bloque.appendChild(titulo);
+/* Sticky CTA */
+new IntersectionObserver(entries => {
+  document.getElementById('sticky-cta').classList.toggle('visible', !entries[0].isIntersecting);
+},{threshold:0}).observe(document.getElementById('wiber-hero'));
 
-        categoria.productos.forEach(producto => {
-          carrito[producto.id] = 0;
-
-          const fila = document.createElement("div");
-          fila.className = "product-row";
-          fila.innerHTML = `
-            <div>
-              <span class="product-name">${producto.nombre}</span>
-              ${producto.detalle ? `<span class="product-detail">${producto.detalle}</span>` : ""}
-            </div>
-            <span class="product-price">${formatoEuro(producto.precio)}</span>
-          `;
-          bloque.appendChild(fila);
-
-          const pedidoItem = document.createElement("div");
-          pedidoItem.className = "order-item";
-          pedidoItem.innerHTML = `
-            <div>
-              <div class="product-name">${producto.nombre}</div>
-              ${producto.detalle ? `<span class="product-detail">${producto.detalle}</span>` : ""}
-              <strong>${formatoEuro(producto.precio)}</strong>
-            </div>
-            <div class="qty-controls">
-              <button type="button" data-action="minus" data-id="${producto.id}" aria-label="Quitar ${producto.nombre}">−</button>
-              <span class="qty" id="qty-${producto.id}">0</span>
-              <button type="button" data-action="plus" data-id="${producto.id}" aria-label="Añadir ${producto.nombre}">+</button>
-            </div>
-          `;
-          orderList.appendChild(pedidoItem);
-        });
-
-        menuList.appendChild(bloque);
-      });
-    }
-
-    function actualizarTotal() {
-      let total = 0;
-
-      todosProductos().forEach(producto => {
-        const cantidad = carrito[producto.id] || 0;
-        total += producto.precio * cantidad;
-
-        const qty = document.getElementById(`qty-${producto.id}`);
-        if (qty) qty.textContent = cantidad;
-      });
-
-      document.getElementById("total").textContent = formatoEuro(total);
-    }
-
-    function productosSeleccionados() {
-      return todosProductos()
-        .filter(producto => carrito[producto.id] > 0)
-        .map(producto => ({
-          ...producto,
-          cantidad: carrito[producto.id],
-          subtotal: producto.precio * carrito[producto.id]
-        }));
-    }
-
-    function cambiarCantidad(event) {
-      const boton = event.target.closest("button[data-action][data-id]");
-      if (!boton) return;
-
-      const id = boton.dataset.id;
-      const action = boton.dataset.action;
-
-      if (action === "plus") carrito[id] += 1;
-      if (action === "minus") carrito[id] = Math.max(0, carrito[id] - 1);
-
-      actualizarTotal();
-    }
-
-    function crearMensajeWhatsApp() {
-      const nombre = document.getElementById("customer-name").value.trim();
-      const situacion = document.getElementById("customer-status").value;
-      const nota = document.getElementById("customer-note").value.trim();
-      const error = document.getElementById("error");
-      const seleccionados = productosSeleccionados();
-
-      error.textContent = "";
-
-      if (!seleccionados.length) {
-        error.textContent = "Añade al menos un producto al pedido.";
-        return null;
-      }
-
-      if (!nombre) {
-        error.textContent = "Escribe tu nombre para poder identificar el pedido.";
-        return null;
-      }
-
-      if (!situacion) {
-        error.textContent = "Selecciona si estás en el bus, en Wiber o devolviendo el coche.";
-        return null;
-      }
-
-      const total = seleccionados.reduce((sum, item) => sum + item.subtotal, 0);
-
-      const pedido = seleccionados
-        .map(item => `- ${item.cantidad} x ${item.nombre}${item.detalle ? " (" + item.detalle + ")" : ""} — ${formatoEuro(item.subtotal)}`)
-        .join("\n");
-
-      return `Hola 2 Nómadas, quiero hacer este pedido para recoger en Wiber Rent a Car:
-
-Nombre: ${nombre}
-Situación: ${situacion}
-
-Pedido:
-${pedido}
-
-Total estimado: ${formatoEuro(total)}
-Nota: ${nota || "Sin nota"}
-
-Pago en el punto de recogida.
-Pedido sujeto a disponibilidad y confirmación por WhatsApp.`;
-    }
-
-    function enviarWhatsApp() {
-      const mensaje = crearMensajeWhatsApp();
-      if (!mensaje) return;
-
-      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`;
-      window.open(url, "_blank", "noopener,noreferrer");
-    }
-
-    function activarStickyCTA() {
-      const sticky = document.getElementById("sticky-cta");
-      const hero = document.getElementById("top");
-
-      if (!("IntersectionObserver" in window)) {
-        sticky.style.display = "flex";
-        return;
-      }
-
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          sticky.style.display = entry.isIntersecting ? "none" : "flex";
-        });
-      });
-
-      observer.observe(hero);
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      renderCarta();
-      actualizarTotal();
-
-      document.getElementById("order-list").addEventListener("click", cambiarCantidad);
-      document.getElementById("whatsapp-btn").addEventListener("click", enviarWhatsApp);
-
-      activarStickyCTA();
-    });
-  </script>
+renderPedidoLista();
+actualizarTotal();
+</script>
 </body>
 </html>
